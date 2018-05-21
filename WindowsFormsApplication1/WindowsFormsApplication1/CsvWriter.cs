@@ -10,7 +10,7 @@ namespace WindowsFormsApplication1
     /// <summary>
 /// CSV形式のストリームを書き込む CsvWriter を実装します。
 /// </summary>
-    public class CsvWriter : IDisposable
+    public class CsvWriter : IDisposable 
     {
         /// <summary>
     /// CSVファイルに書き込むストリーム
@@ -33,7 +33,7 @@ namespace WindowsFormsApplication1
     /// <param name="encoding">使用する文字エンコーディング。</param>
     public CsvWriter(string path, Encoding encoding)
     {
-        var stream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite);
+        var stream = new FileStream(path, FileMode.Append, FileAccess.Write);
         this.stream = new StreamWriter(stream, encoding);
     }
  
@@ -130,10 +130,13 @@ namespace WindowsFormsApplication1
     /// <returns>非同期の書き込み操作を表すタスク。</returns>
     public Task WriteAsync<T>(List<List<T>> data)
     {
-        return Task.Factory.StartNew(() =>
+        Task task = Task.Factory.StartNew(() =>
         {
             this.Write<T>(data);
         });
+        task.Wait();
+
+        return task ;
     }
  
     /// <summary>
@@ -142,33 +145,37 @@ namespace WindowsFormsApplication1
     /// <typeparam name="T">リストの型。</typeparam>
     /// <param name="row">CSVの１レコード。</param>
     public void WriteRow<T>(List<T> row)
-    {
-        var sb = new StringBuilder();
- 
-        foreach(var cell in row)
+    {   
+        try
         {
-            var value = cell.ToString();
- 
-            if (value.Contains(this.NewLine) ||
-                value.Contains(",") ||
-                value.Contains("\""))
+            foreach(var cell in row)
             {
-                value = value.Replace("\"", "\"\"");
-                sb.Append("\"");
-                sb.Append(value);
-                sb.Append("\"");
+            
+                    this.stream.Write(string.Concat(cell.ToString(), ","));
+            
             }
-            else
-            {
-                sb.Append(value);
-            }
- 
-            sb.Append(",");
+
+            this.stream.Write("\r\n");
         }
- 
-        sb.Remove(sb.Length - 1, 1);
-         
-        this.stream.WriteLine(sb.ToString());
+        catch (System.IO.IOException ex)
+        {
+            System.Console.WriteLine(ex.ToString());
+        }
+        finally
+        {
+            this.Close();
+        }
+        
+    }
+
+    private object[] Concat(string p)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void join(string p1, string p2)
+    {
+        throw new NotImplementedException();
     }
  
     /// <summary>
@@ -184,5 +191,7 @@ namespace WindowsFormsApplication1
             this.WriteRow<T>(row);
         });
     }
+
+    public System.Text.Encoding _True { get; set; }
     }
 }

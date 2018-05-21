@@ -13,3 +13,9 @@ C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\WindowsFormsAp
 C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
 C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache

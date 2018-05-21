@@ -22,10 +22,10 @@ namespace WindowsFormsApplication1
         Audio sound_b;
         Audio sound_si;
 
-        int time;
-        Item item = new Item(0) ;
+        //Item item = new Item(0) ;
         //time = item.Times;
-        
+
+       
         int volume;
 
         string[] sounds = new string[] {"C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav"};
@@ -121,16 +121,16 @@ namespace WindowsFormsApplication1
 
             if (shin.Value != null && boin.Value != null)
             {
-                if (time > 0)
+                if (trackBar1.Value > 0)
                 {
                     sound_si.Play();
-                    System.Threading.Thread.Sleep(time * 10);
+                    System.Threading.Thread.Sleep(trackBar1.Value * 10);
                     sound_b.Play();
                 }
                 else
                 {
                     sound_b.Play();
-                    System.Threading.Thread.Sleep(time * -10);
+                    System.Threading.Thread.Sleep(trackBar1.Value * -10);
                     sound_si.Play();
                 }
             }
@@ -152,8 +152,7 @@ namespace WindowsFormsApplication1
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            time = trackBar1.Value;
-            label3.Text = time.ToString();
+            label3.Text = trackBar1.Value.ToString();
 
         }
 
@@ -167,7 +166,7 @@ namespace WindowsFormsApplication1
             sounds[sounds.Length - 1] = boin.Url;
         }
 
-        private void go_Click(object sender, EventArgs e)
+        private async void go_Click(object sender, EventArgs e)
         {
             for (int i = 1; i < sounds.Length-1; i=i+2)
             {
@@ -175,19 +174,19 @@ namespace WindowsFormsApplication1
                 sound_b = new Audio(sounds[i+1]);
 
 
-                if (time > 0)
+                if (trackBar1.Value > 0)
                 {
                     sound_si.Play();
-                    System.Threading.Thread.Sleep(time * 10);
+                    await Task.Delay(trackBar1.Value * 10);
                     sound_b.Play();
                 }
                 else
                 {
                     sound_b.Play();
-                    System.Threading.Thread.Sleep(time * -10);
+                    await Task.Delay(trackBar1.Value * -10);
                     sound_si.Play();
                 }
-                System.Threading.Thread.Sleep(500);
+                await Task.Delay(500);
 
             }
             
@@ -201,43 +200,53 @@ namespace WindowsFormsApplication1
             sounds[0] = "C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav";
         }
 
-        private void Auto_Click(object sender, EventArgs e)
+        int time;
+        private async void Auto_Click(object sender, EventArgs e)
         {
-            time = -10;
-            
-            while (time<=10)
+            int stime = trackBar1.Value;
+            for(int num=0;num<10;num++)
             {
-                trackBar1.Value = time;
-
-                label3.Text = time.ToString();
-                Console.WriteLine(time.ToString());
+                trackBar1.Value = stime + num;
+                time = trackBar1.Value;
+                label3.Text = trackBar1.Value.ToString();
 
                 button1.PerformClick();
-                System.Threading.Thread.Sleep(800);
-                time++;
+                await Task.Delay(500);
+               
 
             }
 
         }
 
-        private void crrect_Click(object sender, EventArgs e)
+        private async void crrect_Click(object sender, EventArgs e)
         {
-            //ここを追記処理にして，最後に書き込むようにする
-            var data = new List<List<string>>()
+            await Task.Run(() =>
             {
-                new List<string>(){shin.Value,boin.Value,time.ToString()},
-            };
-            using (var writer = new CsvWriter(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\result.csv"))
-            {
-                writer.Write(data);
-            }
+                //ここを追記処理にして，最後に書き込むようにする
+
+                var data = new List<string>(){
+                    shin.Value,boin.Value,time.ToString()
+                };
+
+                using (var writer = new CsvWriter("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\result.csv"))
+                {
+                    writer.WriteRow(data);
+                    //非同期にすると失敗する
+                }
+            });
+            
+
+
+            
         }
 
+        
 
       
 
         
     }
+    
     public class Item
     {
         public int Times { get; set; }

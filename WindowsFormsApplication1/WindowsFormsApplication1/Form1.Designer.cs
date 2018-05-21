@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.comboBox_b = new System.Windows.Forms.ComboBox();
@@ -46,13 +45,11 @@
             this.Auto = new System.Windows.Forms.Button();
             this.crrect = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.itemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bol_b)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_s)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speed_s)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.speed_b)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -68,7 +65,8 @@
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(158, 207);
-            this.trackBar1.Minimum = -10;
+            this.trackBar1.Maximum = 40;
+            this.trackBar1.Minimum = -5;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(260, 45);
             this.trackBar1.TabIndex = 1;
@@ -216,16 +214,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.itemBindingSource, "times", true));
             this.label3.Location = new System.Drawing.Point(280, 192);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(11, 12);
             this.label3.TabIndex = 21;
             this.label3.Text = "0";
-            // 
-            // itemBindingSource
-            // 
-            this.itemBindingSource.DataSource = typeof(WindowsFormsApplication1.Item);
             // 
             // Form1
             // 
@@ -256,7 +249,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.vol_s)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speed_s)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.speed_b)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.itemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,7 +273,6 @@
         private System.Windows.Forms.Button Auto;
         private System.Windows.Forms.Button crrect;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.BindingSource itemBindingSource;
     }
 }
 
