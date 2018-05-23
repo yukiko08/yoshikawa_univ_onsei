@@ -119,6 +119,12 @@ namespace WindowsFormsApplication1
             sound_b = new Audio(boin.Url);
             sound_si = new Audio(shin.Url);
 
+            sound_b.Volume = vol_b.Value;
+            sound_si.Volume = vol_s.Value;
+            //10000:右　-10000:左
+            sound_b.Balance = 10000;
+            sound_si.Balance = -10000;
+
             if (shin.Value != null && boin.Value != null)
             {
                 if (trackBar1.Value > 0)
@@ -134,8 +140,9 @@ namespace WindowsFormsApplication1
                     sound_si.Play();
                 }
             }
-            
-            
+
+
+            time = trackBar1.Value;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -152,9 +159,10 @@ namespace WindowsFormsApplication1
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            label3.Text = trackBar1.Value.ToString();
+            textdiv1.Text = trackBar1.Value.ToString();
 
         }
+
 
         private void string_in_Click(object sender, EventArgs e)
         {
@@ -208,7 +216,7 @@ namespace WindowsFormsApplication1
             {
                 trackBar1.Value = stime + num;
                 time = trackBar1.Value;
-                label3.Text = trackBar1.Value.ToString();
+                textdiv1.Text = trackBar1.Value.ToString();
 
                 button1.PerformClick();
                 await Task.Delay(500);
@@ -240,7 +248,14 @@ namespace WindowsFormsApplication1
             
         }
 
-        
+        private void textdiv1_TextChanged(object sender, EventArgs e)
+        {
+      
+            trackBar1.Value = int.Parse(textdiv1.Text);
+       
+        }
+
+
 
       
 

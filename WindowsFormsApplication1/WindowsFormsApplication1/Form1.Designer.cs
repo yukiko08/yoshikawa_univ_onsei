@@ -38,18 +38,14 @@
             this.del = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.bol_b = new System.Windows.Forms.TrackBar();
+            this.vol_b = new System.Windows.Forms.TrackBar();
             this.vol_s = new System.Windows.Forms.TrackBar();
-            this.speed_s = new System.Windows.Forms.TrackBar();
-            this.speed_b = new System.Windows.Forms.TrackBar();
             this.Auto = new System.Windows.Forms.Button();
             this.crrect = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.textdiv1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bol_b)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vol_b)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_s)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speed_s)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speed_b)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -66,7 +62,7 @@
             // 
             this.trackBar1.Location = new System.Drawing.Point(158, 207);
             this.trackBar1.Maximum = 40;
-            this.trackBar1.Minimum = -5;
+            this.trackBar1.Minimum = -10;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(260, 45);
             this.trackBar1.TabIndex = 1;
@@ -150,45 +146,27 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "子音";
             // 
-            // bol_b
+            // vol_b
             // 
-            this.bol_b.Location = new System.Drawing.Point(438, 45);
-            this.bol_b.Maximum = 1000;
-            this.bol_b.Minimum = 100;
-            this.bol_b.Name = "bol_b";
-            this.bol_b.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.bol_b.Size = new System.Drawing.Size(45, 104);
-            this.bol_b.SmallChange = 10;
-            this.bol_b.TabIndex = 15;
-            this.bol_b.Value = 100;
+            this.vol_b.Location = new System.Drawing.Point(438, 45);
+            this.vol_b.Maximum = 0;
+            this.vol_b.Minimum = -5000;
+            this.vol_b.Name = "vol_b";
+            this.vol_b.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.vol_b.Size = new System.Drawing.Size(45, 104);
+            this.vol_b.SmallChange = 100;
+            this.vol_b.TabIndex = 100;
             // 
             // vol_s
             // 
             this.vol_s.Location = new System.Drawing.Point(107, 45);
-            this.vol_s.Maximum = 1000;
-            this.vol_s.Minimum = 100;
+            this.vol_s.Maximum = 0;
+            this.vol_s.Minimum = -5000;
             this.vol_s.Name = "vol_s";
             this.vol_s.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.vol_s.Size = new System.Drawing.Size(45, 104);
-            this.vol_s.SmallChange = 10;
-            this.vol_s.TabIndex = 16;
-            this.vol_s.Value = 100;
-            // 
-            // speed_s
-            // 
-            this.speed_s.Location = new System.Drawing.Point(158, 107);
-            this.speed_s.Maximum = 20;
-            this.speed_s.Name = "speed_s";
-            this.speed_s.Size = new System.Drawing.Size(104, 45);
-            this.speed_s.TabIndex = 17;
-            // 
-            // speed_b
-            // 
-            this.speed_b.Location = new System.Drawing.Point(297, 104);
-            this.speed_b.Maximum = 20;
-            this.speed_b.Name = "speed_b";
-            this.speed_b.Size = new System.Drawing.Size(104, 45);
-            this.speed_b.TabIndex = 18;
+            this.vol_s.SmallChange = 100;
+            this.vol_s.TabIndex = 100;
             // 
             // Auto
             // 
@@ -203,35 +181,33 @@
             // crrect
             // 
             this.crrect.Font = new System.Drawing.Font("MS UI Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.crrect.Location = new System.Drawing.Point(547, 55);
+            this.crrect.Location = new System.Drawing.Point(551, 38);
             this.crrect.Name = "crrect";
-            this.crrect.Size = new System.Drawing.Size(49, 54);
+            this.crrect.Size = new System.Drawing.Size(61, 111);
             this.crrect.TabIndex = 20;
-            this.crrect.Text = "〇";
+            this.crrect.Text = "記録";
             this.crrect.UseVisualStyleBackColor = true;
             this.crrect.Click += new System.EventHandler(this.crrect_Click);
             // 
-            // label3
+            // textdiv1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(280, 192);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 12);
-            this.label3.TabIndex = 21;
-            this.label3.Text = "0";
+            this.textdiv1.Location = new System.Drawing.Point(261, 192);
+            this.textdiv1.Name = "textdiv1";
+            this.textdiv1.Size = new System.Drawing.Size(48, 19);
+            this.textdiv1.TabIndex = 101;
+            this.textdiv1.Text = "0";
+            this.textdiv1.TextChanged += new System.EventHandler(this.textdiv1_TextChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 314);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textdiv1);
             this.Controls.Add(this.crrect);
             this.Controls.Add(this.Auto);
-            this.Controls.Add(this.speed_b);
-            this.Controls.Add(this.speed_s);
             this.Controls.Add(this.vol_s);
-            this.Controls.Add(this.bol_b);
+            this.Controls.Add(this.vol_b);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.del);
@@ -245,10 +221,8 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bol_b)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vol_b)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_s)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speed_s)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.speed_b)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,13 +240,11 @@
         private System.Windows.Forms.Button del;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TrackBar bol_b;
+        private System.Windows.Forms.TrackBar vol_b;
         private System.Windows.Forms.TrackBar vol_s;
-        private System.Windows.Forms.TrackBar speed_s;
-        private System.Windows.Forms.TrackBar speed_b;
         private System.Windows.Forms.Button Auto;
         private System.Windows.Forms.Button crrect;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textdiv1;
     }
 }
 
