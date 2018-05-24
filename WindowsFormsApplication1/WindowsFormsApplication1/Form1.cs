@@ -26,7 +26,7 @@ namespace WindowsFormsApplication1
         //time = item.Times;
 
        
-        int volume;
+        int[] times = new int[]{0};
 
         string[] sounds = new string[] {"C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav"};
 
@@ -38,13 +38,13 @@ namespace WindowsFormsApplication1
             //母音リスト
 
 
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav", "×"));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\a.wav", "a"));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\i.wav", "i"));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\j.wav", "j"));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\u.wav", "u"));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\e.wav", "e"));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\o.wav", "o"));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav", "×",0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\a.wav", "a",0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\i.wav", "i",0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\j.wav", "j",0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\u.wav", "u",0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\e.wav", "e",0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\o.wav", "o",0));
 
 
             
@@ -52,46 +52,43 @@ namespace WindowsFormsApplication1
             //子音リスト
           
            
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav", "×"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k.wav", "k"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav", "×",0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k.wav", "k", 5));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_a.wav", "k_a", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_i.wav", "k_i", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_u.wav", "k_u", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_e.wav", "k_e", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_o.wav", "k_o", 0));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\s.wav", "s"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\s_1.wav", "s_1"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\s_2.wav", "s_2"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\s.wav", "s",28));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\θ.wav", "θ"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\ʃ.wav", "ʃ"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\t.wav", "t", 6));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\tʃ.wav", "tʃ",6));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\t.wav", "t"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\ʒ.wav", "ʒ"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\tʃ.wav", "tʃ"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\n.wav", "n",5));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\n.wav", "n"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\ŋ.wav", "ŋ"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\h.wav", "h",6));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\f.wav", "f",4));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\h.wav", "h"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\f.wav", "f"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\m.wav", "m",5));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\j.wav", "y",2));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\m.wav", "m"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\j.wav", "y"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\r.wav", "r",4));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\r.wav", "r"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\l.wav", "l"));
-
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\w.wav", "w"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\w.wav", "w",6));
 
             //濁点
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\g.wav", "g"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\z.wav", "z"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\g.wav", "g",0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\z.wav", "z", 0));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\d.wav", "d"));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\dʒ.wav", "dʒ"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\d.wav", "d", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\dʒ.wav", "dʒ", 0));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\b.wav", "b"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\b.wav", "b", 0));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\p.wav", "p"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\p.wav", "p", 0));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\v.wav", "v"));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\v.wav", "v", 0));
 
             
 
@@ -101,15 +98,18 @@ namespace WindowsFormsApplication1
         {
             public string Url { get; set; }
             public string Value { get; set; }
-            public CmbObject(string Url, string Value)
+            public int Div { get; set; }
+            public CmbObject(string Url, string Value,int Div)
             {
                 this.Url = Url;
                 this.Value = Value;
+                this.Div = Div;
             }
             public override string ToString()
             {
                 return Value;
-            } 
+            }
+
 
         }
 
@@ -125,18 +125,21 @@ namespace WindowsFormsApplication1
             sound_b.Balance = 10000;
             sound_si.Balance = -10000;
 
+            double lg = trackBar2.Value * 0.002941; 
+            int lon = Convert.ToInt32(Math.Floor(lg*1000));
+
             if (shin.Value != null && boin.Value != null)
             {
                 if (trackBar1.Value > 0)
                 {
                     sound_si.Play();
-                    System.Threading.Thread.Sleep(trackBar1.Value * 10);
+                    System.Threading.Thread.Sleep(trackBar1.Value * 10 +lon);
                     sound_b.Play();
                 }
                 else
                 {
                     sound_b.Play();
-                    System.Threading.Thread.Sleep(trackBar1.Value * -10);
+                    System.Threading.Thread.Sleep(trackBar1.Value * -10 +lon);
                     sound_si.Play();
                 }
             }
@@ -144,6 +147,7 @@ namespace WindowsFormsApplication1
 
             time = trackBar1.Value;
         }
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -154,7 +158,9 @@ namespace WindowsFormsApplication1
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             shin = (CmbObject)comboBox_s.SelectedItem;
-            
+            trackBar1.Value = shin.Div;
+            textdiv1.Text = trackBar1.Value.ToString();
+
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
@@ -168,44 +174,51 @@ namespace WindowsFormsApplication1
         {
             strings.AppendText(shin.Value);
             strings.AppendText(boin.Value);
-            
+
+
+            Array.Resize(ref times, times.Length + 1);
             Array.Resize(ref sounds, sounds.Length +2);
+            times[times.Length - 1] = trackBar1.Value;
             sounds[sounds.Length - 2] = shin.Url;
             sounds[sounds.Length - 1] = boin.Url;
         }
 
         private async void go_Click(object sender, EventArgs e)
         {
+            int t=0;
             for (int i = 1; i < sounds.Length-1; i=i+2)
             {
                 sound_si = new Audio(sounds[i]);
                 sound_b = new Audio(sounds[i+1]);
 
+                t++;
 
-                if (trackBar1.Value > 0)
+                if (times[t] > 0)
                 {
                     sound_si.Play();
-                    await Task.Delay(trackBar1.Value * 10);
+                    await Task.Delay(times[t] * 10);
                     sound_b.Play();
                 }
                 else
                 {
                     sound_b.Play();
-                    await Task.Delay(trackBar1.Value * -10);
+                    await Task.Delay(times[t] * -10);
                     sound_si.Play();
                 }
                 await Task.Delay(500);
 
             }
-            
- 
+
+            t = 0;
         }
 
         private void del_Click(object sender, EventArgs e)
         {
             strings.Text = " ";
             Array.Resize(ref sounds, 1);
+            Array.Resize(ref times, 1);
             sounds[0] = "C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav";
+            times[0] =  0 ;
         }
 
         int time;
@@ -253,6 +266,11 @@ namespace WindowsFormsApplication1
       
             trackBar1.Value = int.Parse(textdiv1.Text);
        
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            textlong.Text = trackBar2.Value.ToString();
         }
 
 

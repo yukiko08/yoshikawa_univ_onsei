@@ -43,14 +43,17 @@
             this.Auto = new System.Windows.Forms.Button();
             this.crrect = new System.Windows.Forms.Button();
             this.textdiv1 = new System.Windows.Forms.TextBox();
+            this.textlong = new System.Windows.Forms.TextBox();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_b)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_s)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(248, 153);
+            this.button1.Location = new System.Drawing.Point(248, 93);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -72,7 +75,7 @@
             // 
             this.comboBox_b.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.comboBox_b.FormattingEnabled = true;
-            this.comboBox_b.Location = new System.Drawing.Point(297, 55);
+            this.comboBox_b.Location = new System.Drawing.Point(297, 44);
             this.comboBox_b.Name = "comboBox_b";
             this.comboBox_b.Size = new System.Drawing.Size(121, 43);
             this.comboBox_b.TabIndex = 4;
@@ -82,7 +85,7 @@
             // 
             this.comboBox_s.Font = new System.Drawing.Font("MS UI Gothic", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.comboBox_s.FormattingEnabled = true;
-            this.comboBox_s.Location = new System.Drawing.Point(158, 55);
+            this.comboBox_s.Location = new System.Drawing.Point(158, 44);
             this.comboBox_s.Name = "comboBox_s";
             this.comboBox_s.Size = new System.Drawing.Size(121, 43);
             this.comboBox_s.TabIndex = 5;
@@ -130,7 +133,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label1.Location = new System.Drawing.Point(312, 20);
+            this.label1.Location = new System.Drawing.Point(312, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 29);
             this.label1.TabIndex = 13;
@@ -140,7 +143,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS UI Gothic", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(168, 20);
+            this.label2.Location = new System.Drawing.Point(168, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 29);
             this.label2.TabIndex = 14;
@@ -148,7 +151,7 @@
             // 
             // vol_b
             // 
-            this.vol_b.Location = new System.Drawing.Point(438, 45);
+            this.vol_b.Location = new System.Drawing.Point(438, 34);
             this.vol_b.Maximum = 0;
             this.vol_b.Minimum = -5000;
             this.vol_b.Name = "vol_b";
@@ -159,7 +162,7 @@
             // 
             // vol_s
             // 
-            this.vol_s.Location = new System.Drawing.Point(107, 45);
+            this.vol_s.Location = new System.Drawing.Point(107, 34);
             this.vol_s.Maximum = 0;
             this.vol_s.Minimum = -5000;
             this.vol_s.Name = "vol_s";
@@ -198,11 +201,30 @@
             this.textdiv1.Text = "0";
             this.textdiv1.TextChanged += new System.EventHandler(this.textdiv1_TextChanged);
             // 
+            // textlong
+            // 
+            this.textlong.Location = new System.Drawing.Point(263, 122);
+            this.textlong.Name = "textlong";
+            this.textlong.Size = new System.Drawing.Size(46, 19);
+            this.textlong.TabIndex = 102;
+            // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(158, 141);
+            this.trackBar2.Maximum = 1000;
+            this.trackBar2.Minimum = -1000;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(286, 45);
+            this.trackBar2.TabIndex = 103;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 314);
+            this.Controls.Add(this.trackBar2);
+            this.Controls.Add(this.textlong);
             this.Controls.Add(this.textdiv1);
             this.Controls.Add(this.crrect);
             this.Controls.Add(this.Auto);
@@ -223,6 +245,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_b)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_s)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,6 +268,8 @@
         private System.Windows.Forms.Button Auto;
         private System.Windows.Forms.Button crrect;
         private System.Windows.Forms.TextBox textdiv1;
+        private System.Windows.Forms.TextBox textlong;
+        private System.Windows.Forms.TrackBar trackBar2;
     }
 }
 
