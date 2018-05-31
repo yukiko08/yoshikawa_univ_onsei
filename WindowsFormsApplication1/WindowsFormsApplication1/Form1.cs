@@ -56,11 +56,6 @@ namespace WindowsFormsApplication1
            
             comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav", "×",0));
             comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k.wav", "k", 5));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_a.wav", "k_a", 0));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_i.wav", "k_i", 0));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_u.wav", "k_u", 0));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_e.wav", "k_e", 0));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k_o.wav", "k_o", 0));
 
             comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\s.wav", "s",28));
 

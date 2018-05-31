@@ -70,9 +70,9 @@ namespace WindowsFormsApplication1
 
                 int time = Int32.Parse(data[x][3]) * 10 + Convert.ToInt32(distance.Value * 2.941);
 
-                shin.Volume = -1000- distance.Value;
-                boin.Volume = -1000 + distance.Value;
-                
+                shin.Volume = -1000 - distance.Value;
+                boin.Volume = -1500 + distance.Value;
+              
 
                 if (time > 0)
                 {
@@ -88,7 +88,7 @@ namespace WindowsFormsApplication1
                 }
                 
 
-                await Task.Delay(500);
+                await Task.Delay(300);
                 
 
             }
