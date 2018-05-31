@@ -16,8 +16,8 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
 
-        CmbObject boin;
-        CmbObject shin;
+        public CmbObject boin;
+        public CmbObject shin;
 
         Audio sound_b;
         Audio sound_si;
@@ -96,7 +96,7 @@ namespace WindowsFormsApplication1
 
         }
 
-        class CmbObject
+        public class CmbObject
         {
             public string Url { get; set; }
             public string Value { get; set; }
@@ -111,7 +111,6 @@ namespace WindowsFormsApplication1
             {
                 return Value;
             }
-
 
         }
 
