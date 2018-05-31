@@ -33,6 +33,8 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+
+
             strings.Text = " ";
 
             //母音リスト
@@ -272,6 +274,15 @@ namespace WindowsFormsApplication1
         {
             textlong.Text = trackBar2.Value.ToString();
         }
+
+        private void form2_Click(object sender, EventArgs e)
+        {
+
+            Form2 form2 = new Form2();
+            form2.Form1Obj = this;
+            form2.Show();
+        }
+
 
 
 

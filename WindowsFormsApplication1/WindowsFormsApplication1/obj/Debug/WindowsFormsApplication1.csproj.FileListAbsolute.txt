@@ -19,3 +19,4 @@ C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsForms
 C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\S2\Documents\yoshikawa_univ_onsei\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form2.resources

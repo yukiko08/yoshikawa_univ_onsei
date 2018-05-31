@@ -45,6 +45,7 @@
             this.textdiv1 = new System.Windows.Forms.TextBox();
             this.textlong = new System.Windows.Forms.TextBox();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.form2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_b)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_s)).BeginInit();
@@ -218,11 +219,22 @@
             this.trackBar2.TabIndex = 103;
             this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
+            // form2
+            // 
+            this.form2.Location = new System.Drawing.Point(551, 206);
+            this.form2.Name = "form2";
+            this.form2.Size = new System.Drawing.Size(75, 23);
+            this.form2.TabIndex = 104;
+            this.form2.Text = "form2";
+            this.form2.UseVisualStyleBackColor = true;
+            this.form2.Click += new System.EventHandler(this.form2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 314);
+            this.Controls.Add(this.form2);
             this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.textlong);
             this.Controls.Add(this.textdiv1);
@@ -255,8 +267,8 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.ComboBox comboBox_b;
-        private System.Windows.Forms.ComboBox comboBox_s;
+        public System.Windows.Forms.ComboBox comboBox_b;
+        public System.Windows.Forms.ComboBox comboBox_s;
         private System.Windows.Forms.Button go;
         private System.Windows.Forms.TextBox strings;
         private System.Windows.Forms.Button string_in;
@@ -270,6 +282,7 @@
         private System.Windows.Forms.TextBox textdiv1;
         private System.Windows.Forms.TextBox textlong;
         private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Button form2;
     }
 }
 
