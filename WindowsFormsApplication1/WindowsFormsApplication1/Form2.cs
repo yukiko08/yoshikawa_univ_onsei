@@ -69,6 +69,11 @@ namespace WindowsFormsApplication1
                 boin.Balance = 10000;
 
                 int time = Int32.Parse(data[x][3]) * 10 + Convert.ToInt32(distance.Value * 2.941);
+
+                shin.Volume = -1000- distance.Value;
+                boin.Volume = -1000 + distance.Value;
+                
+
                 if (time > 0)
                 {
                     shin.Play();
