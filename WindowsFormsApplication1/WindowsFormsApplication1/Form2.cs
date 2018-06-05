@@ -17,10 +17,11 @@ namespace WindowsFormsApplication1
         List<List<string>> data = new List<List<string>>();
 
 
-        Audio boin;
-        Audio shin;
+        Audio boin = new Audio("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav");
+        Audio shin = new Audio("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav");
 
         public Form1 Form1Obj;
+
 
         public Form2()
         {
@@ -37,13 +38,20 @@ namespace WindowsFormsApplication1
             }
         }
 
-        private async void start_Click(object sender, EventArgs e)
+        private void start_Click(object sender, EventArgs e)
         {
             string text = textBox1.Text;
             string[] str = new string[text.Length];
+
+            string[] url_s = new string[text.Length];
+            string[] url_b = new string[text.Length];
+            int[] times = new int[text.Length];
+
+
             for (int i = 0; i < text.Length; i++) str[i] = text.Substring(i, 1);
 
-            //検索
+            //検索して格納
+
             for (int i = 0; i < text.Length ; i++)
             {
                 int x = 0;
@@ -52,8 +60,12 @@ namespace WindowsFormsApplication1
                     {
                         int num_s = Form1Obj.comboBox_s.FindString(data[x][1]);
                         Form1Obj.comboBox_s.SelectedIndex = num_s;
+                        url_s[i] = Form1Obj.shin.Url;
                         int num_b = Form1Obj.comboBox_b.FindString(data[x][2]);
                         Form1Obj.comboBox_b.SelectedIndex = num_b;
+                        url_b[i] = Form1Obj.boin.Url;
+
+                        times[i] = Int32.Parse(data[x][3]);
 
                         break;
                     }
@@ -63,35 +75,43 @@ namespace WindowsFormsApplication1
                     }
                     
                 }
-                shin = new Audio(Form1Obj.shin.Url);
-                shin.Balance = -10000;
-                boin = new Audio(Form1Obj.boin.Url);
-                boin.Balance = 10000;
-
-                int time = Int32.Parse(data[x][3]) * 10 + Convert.ToInt32(distance.Value * 2.941);
-
-                shin.Volume = -1000 - distance.Value;
-                boin.Volume = -1500 + distance.Value;
-              
-
-                if (time > 0)
-                {
-                    shin.Play();
-                    await Task.Delay(time);
-                    boin.Play();
-                }
-                else
-                {
-                    boin.Play();
-                    await Task.Delay(-time);
-                    shin.Play();
-                }
-                
-
-                await Task.Delay(300);
-                
-
             }
+            shin.Volume = -1000 - distance.Value;
+            boin.Volume = -1500 + distance.Value;
+
+            shin.Balance = -10000;
+            boin.Balance = 10000;
+
+            shin_Asyns(url_b);
+            boin_Asyns(url_s, times);
+
+        }
+
+
+        //一音を0.5秒ごとにならす
+        private async void shin_Asyns(string[] url)
+        {
+            for (int i = 0; i < textBox1.Text.Length ; i++)
+            {
+                shin = new Audio(url[i]);
+                shin.Play();
+                await Task.Delay(500);
+            }
+            
+
+            int time = Convert.ToInt32(distance.Value * 2.941);
+            
+        }
+        private async void boin_Asyns(string[] url,int[] time)
+        {
+            for (int i = 0; i < textBox1.Text.Length; i++)
+            {
+                boin = new Audio(url[i]);
+                label4.Text = time[i].ToString();
+                boin.Play();
+                await Task.Delay(distance.Value > 0 ? 500 + time[i]*10 + Convert.ToInt32(distance.Value * 2.941) : 500 + time[i] - Convert.ToInt32(distance.Value * -2.941));
+            }
+
 
 
         }
@@ -99,7 +119,7 @@ namespace WindowsFormsApplication1
 
         private void distance_Scroll(object sender, EventArgs e)
         {
-            dis_label.Text = distance.Value.ToString(); 
+            dis_label.Text = distance.Value.ToString()+"m"; 
         }
 
     }

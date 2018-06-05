@@ -35,6 +35,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.distance = new System.Windows.Forms.TrackBar();
             this.dis_label = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.distance)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,11 +107,31 @@
             this.dis_label.TabIndex = 6;
             this.dis_label.Text = "label3";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(149, 209);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 12);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "子音と母音のtime差";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(190, 225);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 12);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "label4";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.dis_label);
             this.Controls.Add(this.distance);
             this.Controls.Add(this.label2);
@@ -134,5 +156,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TrackBar distance;
         private System.Windows.Forms.Label dis_label;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
