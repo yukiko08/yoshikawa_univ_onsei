@@ -1,7 +1,16 @@
 cd C:\Users\S2\Documents\yoshikawa_univ_onsei\ffmpeg_static\bin
-set num=1
-for /l %%i in (0,1,10) do (
+
+setlocal enabledelayedexpansion
+
+set num=0
 set file=%num%.wav
-ffmpeg -i C:\Users\S2\Documents\yoshikawa_univ_onsei\ffmpeg_static\input.wav -ss %i -t 1 %file%
-set /a num =num+1 
+echo %file%
+
+for /l %%i in (0,1,50) do (
+set /a num=num+1
+set file=!num!.wav
+echo !file!
+ffmpeg -i C:\Users\S2\Documents\yoshikawa_univ_onsei\ffmpeg_static\input.wav -ss %%i -t 1 "%%i.wav"
+
 )
+pause
