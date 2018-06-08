@@ -41,6 +41,7 @@ namespace SlicePlay
             left.Balance = -10000;
 
             right.Play();
+            System.Threading.Thread.Sleep(50);
             left.Play();
         }
 
@@ -53,6 +54,8 @@ namespace SlicePlay
             left.Balance = -10000;
 
             right.Play();
+
+            System.Threading.Thread.Sleep(50);
             left.Play();
         }
 
@@ -65,6 +68,7 @@ namespace SlicePlay
             left.Balance = -10000;
 
             right.Play();
+            System.Threading.Thread.Sleep(50);
             left.Play();
         }
 
