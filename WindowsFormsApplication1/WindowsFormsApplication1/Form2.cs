@@ -26,10 +26,6 @@ namespace WindowsFormsApplication1
         public Form2()
         {
             InitializeComponent();
-        }
-
-        private void load_btn_Click(object sender, EventArgs e)
-        {
             data = null;
 
             using (var csv = new CsvReader(@"C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\result_time.csv"))
@@ -37,6 +33,7 @@ namespace WindowsFormsApplication1
                 data = csv.ReadToEnd();
             }
         }
+
 
         private void start_Click(object sender, EventArgs e)
         {
@@ -91,6 +88,10 @@ namespace WindowsFormsApplication1
         //一音を0.5秒ごとにならす
         private async void shin_Asyns(string[] url)
         {
+            if (distance.Value < 0)
+            {
+                await Task.Delay(distance.Value * -3);
+            }
             for (int i = 0; i < textBox1.Text.Length ; i++)
             {
                 shin = new Audio(url[i]);
@@ -98,18 +99,20 @@ namespace WindowsFormsApplication1
                 await Task.Delay(500);
             }
             
-
-            int time = Convert.ToInt32(distance.Value * 2.941);
             
         }
         private async void boin_Asyns(string[] url,int[] time)
         {
+            if (distance.Value > 0)
+            {
+                await Task.Delay(distance.Value * 3);
+            }
             for (int i = 0; i < textBox1.Text.Length; i++)
             {
                 boin = new Audio(url[i]);
                 label4.Text = time[i].ToString();
                 boin.Play();
-                await Task.Delay(distance.Value > 0 ? 500 + time[i]*10 + Convert.ToInt32(distance.Value * 2.941) : 500 + time[i] - Convert.ToInt32(distance.Value * -2.941));
+                await Task.Delay(500 + time[i]*10);
             }
 
 
