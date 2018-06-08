@@ -17,8 +17,8 @@ namespace WindowsFormsApplication1
         List<List<string>> data = new List<List<string>>();
 
 
-        Audio boin = new Audio("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav");
-        Audio shin = new Audio("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav");
+        Audio boin = new Audio("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
+        Audio shin = new Audio("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
 
         public Form1 Form1Obj;
 
@@ -32,7 +32,7 @@ namespace WindowsFormsApplication1
         {
             data = null;
 
-            using (var csv = new CsvReader(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\result_time.csv"))
+            using (var csv = new CsvReader(@"C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\result_time.csv"))
             {
                 data = csv.ReadToEnd();
             }
