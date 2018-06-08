@@ -5,9 +5,9 @@ setlocal enabledelayedexpansion
 
 
 for /l %%j in (0,1,10) do (
-for /l %%i in (0,1,9) do (
+for /l %%i in (0,5,5) do (
 
-ffmpeg -i C:\Users\S2\Documents\yoshikawa_univ_onsei\ffmpeg_static\input.wav -ss %%j.%%i -t 0.1 "%%j_%%i.wav"
+ffmpeg -i C:\Users\S2\Documents\yoshikawa_univ_onsei\ffmpeg_static\input_a.wav -ss %%j.%%i -t 0.5 "%%j_%%i.wav"
 
 )
 )

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.load_btn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.start = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,17 +38,6 @@
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.distance)).BeginInit();
             this.SuspendLayout();
-            // 
-            // load_btn
-            // 
-            this.load_btn.Font = new System.Drawing.Font("MS UI Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.load_btn.Location = new System.Drawing.Point(12, 12);
-            this.load_btn.Name = "load_btn";
-            this.load_btn.Size = new System.Drawing.Size(117, 47);
-            this.load_btn.TabIndex = 0;
-            this.load_btn.Text = "LOAD";
-            this.load_btn.UseVisualStyleBackColor = true;
-            this.load_btn.Click += new System.EventHandler(this.load_btn_Click);
             // 
             // textBox1
             // 
@@ -138,7 +126,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.start);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.load_btn);
             this.Name = "Form2";
             this.Text = "Form2";
             ((System.ComponentModel.ISupportInitialize)(this.distance)).EndInit();
@@ -149,7 +136,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button load_btn;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button start;
         private System.Windows.Forms.Label label1;
