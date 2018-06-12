@@ -1,0 +1,70 @@
+﻿<Window x:Class="b4contest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="500" Width="800">
+    <Window.Resources>
+        <Style x:Key="SliderStyle" TargetType="Slider">
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+                    <ControlTemplate TargetType="Slider">
+                        <Grid Margin="{TemplateBinding Padding}">
+                            <Grid.Resources>
+                                <Style x:Key="SliderThumbStyle" TargetType="Thumb">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="Thumb">
+                                                <Ellipse Height="50" Width="30">
+                                                    <Ellipse.Fill>
+                                                        <ImageBrush ImageSource="C:\Users\S2\Documents\yoshikawa_univ_onsei\b4contest\b4contest\thumb.png"></ImageBrush>
+                                                    </Ellipse.Fill>
+                                                </Ellipse>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid x:Name="SliderContainer" Background="Transparent">
+                                <Grid x:Name="HorizontalTemplate">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    
+                                    <!-- 下の目盛り -->
+                                    <TickBar Grid.Row="1" Placement="Bottom" Visibility="Visible" Fill="Black" Height="5" Opacity="1" Margin="0,10,0,0" TickFrequency="50" OpacityMask="#FFFF0F0F"  />
+
+                                    <Track Grid.Row="0" x:Name="PART_Track" Margin="10,0,0,10" Grid.RowSpan="2">
+                                        <!-- 減少側のトラック（レール） -->
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Command="Slider.DecreaseLarge" Background="{TemplateBinding Foreground}" Height="5" BorderBrush="{x:Null}" BorderThickness="0" Opacity="1"/>
+                                        </Track.DecreaseRepeatButton>
+
+                                        <!-- 増加側のトラック（レール） -->
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Command="Slider.IncreaseLarge" Background="{TemplateBinding Foreground}" Height="5" BorderBrush="{x:Null}" BorderThickness="0" Opacity="1"/>
+                                        </Track.IncreaseRepeatButton>
+
+                                        <!-- つまみ -->
+                                        <Track.Thumb>
+                                            <Thumb Style="{StaticResource SliderThumbStyle}" />
+                                        </Track.Thumb>
+                                    </Track>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Window.Resources>
+    <Grid>
+        <Slider Style="{StaticResource SliderStyle}" HorizontalAlignment="Left" Margin="150,330,0,84" VerticalAlignment="Top" Width="500" Maximum="1000" Minimum="-1000" TickPlacement="BottomRight"   />
+        <Slider HorizontalAlignment="Left" Margin="128,163,0,0" VerticalAlignment="Top" Width="540" TickPlacement="BottomRight" Foreground="#00BCD4" />
+
+    </Grid>
+</Window>
