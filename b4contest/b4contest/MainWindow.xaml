@@ -1,61 +1,109 @@
 ﻿<Window x:Class="b4contest.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="410" Width="750">
     <Window.Resources>
         <Style x:Key="SliderStyle" TargetType="Slider">
-
             <Setter Property="Template">
-
                 <Setter.Value>
-                    <ControlTemplate TargetType="Slider">
+                    <ControlTemplate TargetType="Slider" >
                         <Grid Margin="{TemplateBinding Padding}">
                             <Grid.Resources>
                                 <Style x:Key="SliderThumbStyle" TargetType="Thumb">
                                     <Setter Property="Template">
                                         <Setter.Value>
-                                            <ControlTemplate TargetType="Thumb">
-                                                <Ellipse Height="50" Width="30">
+                                            <ControlTemplate  TargetType="Thumb">
+
+                                                <Ellipse Height="80" Width="50">
                                                     <Ellipse.Fill>
                                                         <ImageBrush ImageSource="C:\Users\S2\Documents\yoshikawa_univ_onsei\b4contest\b4contest\thumb.png"></ImageBrush>
                                                     </Ellipse.Fill>
                                                 </Ellipse>
+
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
+
                                 </Style>
+
                             </Grid.Resources>
+
                             <Grid x:Name="SliderContainer" Background="Transparent">
                                 <Grid x:Name="HorizontalTemplate">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    
+
                                     <!-- 下の目盛り -->
-                                    <TickBar Grid.Row="1" Placement="Bottom" Visibility="Visible" Fill="Black" Height="5" Opacity="1" Margin="0,10,0,0" TickFrequency="50" OpacityMask="#FFFF0F0F"  />
+                                    <TickBar Grid.Row="1" Placement="Bottom" Visibility="Visible" Fill="Black" Height="5" Opacity="1" Margin="0,10,0,0" TickFrequency="50"   />
 
                                     <Track Grid.Row="0" x:Name="PART_Track" Margin="10,0,0,10" Grid.RowSpan="2">
                                         <!-- 減少側のトラック（レール） -->
                                         <Track.DecreaseRepeatButton>
-                                            <RepeatButton Command="Slider.DecreaseLarge" Background="{TemplateBinding Foreground}" Height="5" BorderBrush="{x:Null}" BorderThickness="0" Opacity="1"/>
+                                            <RepeatButton Command="Slider.DecreaseLarge" Background="DeepSkyBlue" Height="5" BorderBrush="{x:Null}" BorderThickness="0" Opacity="1"/>
                                         </Track.DecreaseRepeatButton>
 
                                         <!-- 増加側のトラック（レール） -->
                                         <Track.IncreaseRepeatButton>
-                                            <RepeatButton Command="Slider.IncreaseLarge" Background="{TemplateBinding Foreground}" Height="5" BorderBrush="{x:Null}" BorderThickness="0" Opacity="1"/>
+                                            <RepeatButton Command="Slider.IncreaseLarge" Background="DeepSkyBlue" Height="5" BorderBrush="{x:Null}" BorderThickness="0" Opacity="1"/>
                                         </Track.IncreaseRepeatButton>
 
                                         <!-- つまみ -->
                                         <Track.Thumb>
-                                            <Thumb Style="{StaticResource SliderThumbStyle}" />
+                                            <Thumb x:Name="Thumb" Style="{StaticResource SliderThumbStyle}" />
                                         </Track.Thumb>
+
                                     </Track>
+
+
+
                                 </Grid>
                             </Grid>
                         </Grid>
-                    </ControlTemplate>
 
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="DeepSkyBlue"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="10" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
@@ -63,8 +111,20 @@
 
     </Window.Resources>
     <Grid>
-        <Slider Style="{StaticResource SliderStyle}" HorizontalAlignment="Left" Margin="150,330,0,84" VerticalAlignment="Top" Width="500" Maximum="1000" Minimum="-1000" TickPlacement="BottomRight"   />
-        <Slider HorizontalAlignment="Left" Margin="128,163,0,0" VerticalAlignment="Top" Width="540" TickPlacement="BottomRight" Foreground="#00BCD4" />
+        <Slider Style="{StaticResource SliderStyle}" HorizontalAlignment="Left" Margin="119,259,0,0" VerticalAlignment="Top" Width="500" Maximum="1000" Minimum="-1000" TickPlacement="BottomRight"   />
+        <Image Margin="32,259,650,30" Source="audio.png" Stretch="Fill" Width="60"/>
+        <Image Margin="650,259,32,30" Source="audio.png" Stretch="Fill" Width="60"/>
+        <Button Content="音楽" HorizontalAlignment="Left" Margin="69,46,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource ButtonStyle1}" FontSize="20"/>
+        <Button Content="アナウンサー" HorizontalAlignment="Left" Margin="169,46,0,0" VerticalAlignment="Top" Width="126"  Style="{DynamicResource ButtonStyle1}" FontSize="20"/>
+
+        <Slider HorizontalAlignment="Left" Margin="32,106,0,0" VerticalAlignment="Top" Width="303" />
+        <TextBox HorizontalAlignment="Left" Height="39" Margin="389,46,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="292" FontSize="20"/>
+        <Label Content="文章読み上げ" HorizontalAlignment="Left" Margin="389,9,0,0" VerticalAlignment="Top" Width="197" FontSize="20"/>
+        <Label Content="子音と母音のタイム差：" HorizontalAlignment="Left" Margin="389,101,0,0" VerticalAlignment="Top" Width="170" FontSize="16"/>
+        <Button Content="Play" HorizontalAlignment="Left" Margin="620,101,0,0" VerticalAlignment="Top" Width="61" Style="{DynamicResource ButtonStyle1}" FontSize="20"/>
+        <Label Content="距離によるタイム差：" HorizontalAlignment="Left" Margin="269,205,0,0" VerticalAlignment="Top" Width="172" FontSize="16"/>
+        <Label Content="切り取り幅：" HorizontalAlignment="Left" Margin="69,139,0,0" VerticalAlignment="Top" Width="101" FontSize="16"/>
+
 
     </Grid>
 </Window>
