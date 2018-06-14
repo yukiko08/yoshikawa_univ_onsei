@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1
        
         int[] times = new int[]{0};
 
-        string[] sounds = new string[] {"C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav"};
+        string[] sounds = new string[] { "C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav" };
 
         public Form1()
         {
@@ -40,52 +40,49 @@ namespace WindowsFormsApplication1
             //母音リスト
 
 
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav", "×",0));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\a.wav", "a",0));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\i.wav", "i",0));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\j.wav", "j",0));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\u.wav", "u",0));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\e.wav", "e",0));
-            comboBox_b.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\o.wav", "o",0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav", "×", 0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\a.wav", "a", 0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\i.wav", "i", 0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\j.wav", "j", 0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\u.wav", "u", 0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\e.wav", "e", 0));
+            comboBox_b.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\o.wav", "o", 0));
 
 
             
             
             //子音リスト
-          
-           
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav", "×",0));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\k.wav", "k", 5));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\s.wav", "s",28));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\t.wav", "t", 6));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\tʃ.wav", "tʃ",6));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav", "×", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\k.wav", "k", 5));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\n.wav", "n",5));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\s.wav", "s", 28));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\h.wav", "h",6));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\f.wav", "f",4));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\t.wav", "t", 6));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\tʃ.wav", "tʃ", 6));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\m.wav", "m",5));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\j.wav", "y",2));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\n.wav", "n", 5));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\r.wav", "r",4));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\h.wav", "h", 6));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\f.wav", "f", 4));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\w.wav", "w",6));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\m.wav", "m", 5));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\j.wav", "y", 2));
+
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\w.wav", "w", 6));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\r.wav", "r", 4));
 
             //濁点
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\g.wav", "g",0));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\z.wav", "z", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\g.wav", "g", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\z.wav", "z", 0));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\d.wav", "d", 0));
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\dʒ.wav", "dʒ", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\d.wav", "d", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\dʒ.wav", "dʒ", 0));
 
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\b.wav", "b", 0));
-
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\p.wav", "p", 0));
-
-            comboBox_s.Items.Add(new CmbObject("C:\\Users\\S2\\Music\\日本語発音\\wav\\v.wav", "v", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\b.wav", "b", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\p.wav", "p", 0));
+            comboBox_s.Items.Add(new CmbObject("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\v.wav", "v", 0));
 
             
 
@@ -213,7 +210,7 @@ namespace WindowsFormsApplication1
             strings.Text = " ";
             Array.Resize(ref sounds, 1);
             Array.Resize(ref times, 1);
-            sounds[0] = "C:\\Users\\S2\\Music\\日本語発音\\wav\\none.wav";
+            sounds[0] = "C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav";
             times[0] =  0 ;
         }
 
