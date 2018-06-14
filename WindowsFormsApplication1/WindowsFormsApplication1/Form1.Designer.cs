@@ -46,6 +46,7 @@
             this.textlong = new System.Windows.Forms.TextBox();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.form2 = new System.Windows.Forms.Button();
+            this.auto2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_b)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vol_s)).BeginInit();
@@ -154,7 +155,7 @@
             // 
             this.vol_b.Location = new System.Drawing.Point(438, 34);
             this.vol_b.Maximum = 0;
-            this.vol_b.Minimum = -5000;
+            this.vol_b.Minimum = -4000;
             this.vol_b.Name = "vol_b";
             this.vol_b.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.vol_b.Size = new System.Drawing.Size(45, 104);
@@ -165,12 +166,13 @@
             // 
             this.vol_s.Location = new System.Drawing.Point(107, 34);
             this.vol_s.Maximum = 0;
-            this.vol_s.Minimum = -5000;
+            this.vol_s.Minimum = -4000;
             this.vol_s.Name = "vol_s";
             this.vol_s.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.vol_s.Size = new System.Drawing.Size(45, 104);
             this.vol_s.SmallChange = 100;
             this.vol_s.TabIndex = 100;
+            this.vol_s.Value = -1500;
             // 
             // Auto
             // 
@@ -229,11 +231,22 @@
             this.form2.UseVisualStyleBackColor = true;
             this.form2.Click += new System.EventHandler(this.form2_Click);
             // 
+            // auto2
+            // 
+            this.auto2.Location = new System.Drawing.Point(98, 144);
+            this.auto2.Name = "auto2";
+            this.auto2.Size = new System.Drawing.Size(54, 23);
+            this.auto2.TabIndex = 105;
+            this.auto2.Text = "Auto→";
+            this.auto2.UseVisualStyleBackColor = true;
+            this.auto2.Click += new System.EventHandler(this.auto2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 314);
+            this.Controls.Add(this.auto2);
             this.Controls.Add(this.form2);
             this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.textlong);
@@ -283,6 +296,7 @@
         private System.Windows.Forms.TextBox textlong;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Button form2;
+        private System.Windows.Forms.Button auto2;
     }
 }
 

@@ -237,12 +237,14 @@ namespace WindowsFormsApplication1
 
         private async void crrect_Click(object sender, EventArgs e)
         {
+            int v_s = vol_s.Value;
+            int v_b = vol_b.Value;
             await Task.Run(() =>
             {
                 //ここを追記処理にして，最後に書き込むようにする
 
                 var data = new List<string>(){
-                    shin.Value,boin.Value,time.ToString()
+                    shin.Value,boin.Value,time.ToString(),v_s.ToString(),v_b.ToString()
                 };
 
                 using (var writer = new CsvWriter("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\result.csv"))
@@ -275,6 +277,20 @@ namespace WindowsFormsApplication1
             Form2 form2 = new Form2();
             form2.Form1Obj = this;
             form2.Show();
+        }
+
+        private async void auto2_Click(object sender, EventArgs e)
+        {
+            int v = vol_b.Value;
+            for (int num = 0; num >-2000; num=num-100)
+            {
+                vol_b.Value = v + num;
+
+                button1.PerformClick();
+                await Task.Delay(500);
+
+
+            }
         }
 
 
