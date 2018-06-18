@@ -111,19 +111,21 @@
 
     </Window.Resources>
     <Grid>
-        <Slider Style="{StaticResource SliderStyle}" HorizontalAlignment="Left" Margin="119,259,0,0" VerticalAlignment="Top" Width="500" Maximum="1000" Minimum="-1000" TickPlacement="BottomRight"   />
-        <Image Margin="32,259,650,30" Source="audio.png" Stretch="Fill" Width="60"/>
-        <Image Margin="650,259,32,30" Source="audio.png" Stretch="Fill" Width="60"/>
+        <Slider x:Name="distance" Style="{StaticResource SliderStyle}" Margin="129,259,128,0" Width="485" Maximum="1000" Minimum="-1000" TickPlacement="BottomRight"   />
+        <Image Margin="32,259,644,30" Source="audio.png" Stretch="Fill" Height="Auto" />
+        <Image Margin="643,259,32,30" Source="audio.png" Stretch="Fill"/>
         <Button Content="音楽" HorizontalAlignment="Left" Margin="69,46,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource ButtonStyle1}" FontSize="20"/>
         <Button Content="アナウンサー" HorizontalAlignment="Left" Margin="169,46,0,0" VerticalAlignment="Top" Width="126"  Style="{DynamicResource ButtonStyle1}" FontSize="20"/>
 
         <Slider HorizontalAlignment="Left" Margin="32,106,0,0" VerticalAlignment="Top" Width="303" />
-        <TextBox HorizontalAlignment="Left" Height="39" Margin="389,46,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="292" FontSize="20"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="39" Margin="389,46,0,0" TextWrapping="Wrap" Text="ひらがなをいれてね" VerticalAlignment="Top" Width="292" FontSize="20"/>
         <Label Content="文章読み上げ" HorizontalAlignment="Left" Margin="389,9,0,0" VerticalAlignment="Top" Width="197" FontSize="20"/>
         <Label Content="子音と母音のタイム差：" HorizontalAlignment="Left" Margin="389,101,0,0" VerticalAlignment="Top" Width="170" FontSize="16"/>
-        <Button Content="Play" HorizontalAlignment="Left" Margin="620,101,0,0" VerticalAlignment="Top" Width="61" Style="{DynamicResource ButtonStyle1}" FontSize="20"/>
+        <Button Content="Play" HorizontalAlignment="Left" Margin="620,101,0,0" VerticalAlignment="Top" Width="61" Style="{DynamicResource ButtonStyle1}" FontSize="20" Click="Button_Click"/>
         <Label Content="距離によるタイム差：" HorizontalAlignment="Left" Margin="269,205,0,0" VerticalAlignment="Top" Width="172" FontSize="16"/>
         <Label Content="切り取り幅：" HorizontalAlignment="Left" Margin="69,139,0,0" VerticalAlignment="Top" Width="101" FontSize="16"/>
+        <Label Content="子音" HorizontalAlignment="Left" Margin="43,218,0,0" VerticalAlignment="Top"/>
+        <Label Content="母音" HorizontalAlignment="Left" Margin="663,218,0,0" VerticalAlignment="Top" RenderTransformOrigin="14.882,0.462"/>
 
 
     </Grid>
