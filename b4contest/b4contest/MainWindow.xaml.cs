@@ -22,8 +22,8 @@ namespace b4contest
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<object> boin = new List<object>();
-        List<object> shin = new List<object>();
+        List<CmbObject> boin = new List<CmbObject>();
+        List<CmbObject> shin = new List<CmbObject>();
 
         Audio sound_b = new Audio("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
         Audio sound_s = new Audio("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
@@ -32,6 +32,7 @@ namespace b4contest
         {
             InitializeComponent();
 
+            
 
             boin.Add(new CmbObject("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav", "×"));
             boin.Add(new CmbObject("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\a.wav", "a"));
@@ -61,6 +62,8 @@ namespace b4contest
             sound_b.Balance = 10000;
             sound_s = new Audio(shin[0].ToString());
             sound_s.Balance = -10000;
+
+            
              
         }
 
@@ -74,16 +77,13 @@ namespace b4contest
                 this.Url = Url;
                 this.Value = Value;
             }
+
             public override string ToString()
             {
                 return Url;
             }
 
-            public override bool Equals(string obj)
-            {
-                return (obj == this.Value);
-                //return base.Equals(obj);
-            }
+
 
         }
 
@@ -121,11 +121,11 @@ namespace b4contest
                     if (str[i] == data[x][0])
                     {
                         
-                        object s =shin[shin.IndexOf(data[x][1])];
-                        
+                        var s = shin.Find(v => v.Value == data[x][1]);
+                        Console.WriteLine(s);
                         url_s[i] = s.ToString();
-                        object b = shin[shin.IndexOf(data[x][1])];
-                        url_b[i] = b.ToString();
+                        
+                        //url_b[i] = b.ToString();
                         times[i] = Int32.Parse(data[x][3]);
 
                         break;

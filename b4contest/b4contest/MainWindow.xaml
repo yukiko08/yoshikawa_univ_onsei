@@ -16,7 +16,7 @@
 
                                                 <Ellipse Height="80" Width="50">
                                                     <Ellipse.Fill>
-                                                        <ImageBrush ImageSource="C:\Users\S2\Documents\yoshikawa_univ_onsei\b4contest\b4contest\thumb.png"></ImageBrush>
+                                                        <ImageBrush ImageSource="thumb.png"></ImageBrush>
                                                     </Ellipse.Fill>
                                                 </Ellipse>
 
