@@ -75,8 +75,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
-        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
         <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background" Value="DeepSkyBlue"/>
@@ -92,14 +90,33 @@
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsDefaulted" Value="true">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
-                            </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}" BasedOn="{StaticResource ButtonStyle1}">
+            <Setter Property="Background" Value="Salmon" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="10" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="PeachPuff"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="PeachPuff"/>
                             </Trigger>
 
                         </ControlTemplate.Triggers>
@@ -111,21 +128,25 @@
 
     </Window.Resources>
     <Grid>
-        <Slider x:Name="distance" Style="{StaticResource SliderStyle}" Margin="129,259,128,0" Width="485" Maximum="1000" Minimum="-1000" TickPlacement="BottomRight"   />
+        <Slider x:Name="distance" Style="{StaticResource SliderStyle}" Margin="129,259,128,0" Width="485" Maximum="1000" Minimum="-1000" TickPlacement="BottomRight" ValueChanged="distance_ValueChanged"   />
         <Image Margin="32,259,644,30" Source="audio.png" Stretch="Fill" Height="Auto" />
         <Image Margin="643,259,32,30" Source="audio.png" Stretch="Fill"/>
-        <Button Content="音楽" HorizontalAlignment="Left" Margin="69,46,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource ButtonStyle1}" FontSize="20"/>
-        <Button Content="アナウンサー" HorizontalAlignment="Left" Margin="169,46,0,0" VerticalAlignment="Top" Width="126"  Style="{DynamicResource ButtonStyle1}" FontSize="20"/>
+        <Button x:Name="music" Content="音楽" HorizontalAlignment="Left" Margin="69,46,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource ButtonStyle1}" FontSize="20" Click="music_Click"/>
+        <Button x:Name="announcer" Content="アナウンサー" HorizontalAlignment="Left" Margin="169,46,0,0" VerticalAlignment="Top" Width="126"  Style="{DynamicResource ButtonStyle1}" FontSize="20" Click="announcer_Click"/>
 
-        <Slider HorizontalAlignment="Left" Margin="32,106,0,0" VerticalAlignment="Top" Width="303" />
+        <Slider x:Name="slice" HorizontalAlignment="Left" Margin="32,106,0,0" VerticalAlignment="Top" Width="303" ValueChanged="slice_ValueChanged" SmallChange="1" Maximum="1000" Foreground="#FF0039F9" />
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="39" Margin="389,46,0,0" TextWrapping="Wrap" Text="ひらがなをいれてね" VerticalAlignment="Top" Width="292" FontSize="20"/>
         <Label Content="文章読み上げ" HorizontalAlignment="Left" Margin="389,9,0,0" VerticalAlignment="Top" Width="197" FontSize="20"/>
         <Label Content="子音と母音のタイム差：" HorizontalAlignment="Left" Margin="389,101,0,0" VerticalAlignment="Top" Width="170" FontSize="16"/>
         <Button Content="Play" HorizontalAlignment="Left" Margin="620,101,0,0" VerticalAlignment="Top" Width="61" Style="{DynamicResource ButtonStyle1}" FontSize="20" Click="Button_Click"/>
         <Label Content="距離によるタイム差：" HorizontalAlignment="Left" Margin="269,205,0,0" VerticalAlignment="Top" Width="172" FontSize="16"/>
-        <Label Content="切り取り幅：" HorizontalAlignment="Left" Margin="69,139,0,0" VerticalAlignment="Top" Width="101" FontSize="16"/>
+        <Label Content="切り取り幅：" HorizontalAlignment="Left" Margin="69,139,0,0" VerticalAlignment="Top" Width="96" FontSize="16"/>
         <Label Content="子音" HorizontalAlignment="Left" Margin="43,218,0,0" VerticalAlignment="Top"/>
         <Label Content="母音" HorizontalAlignment="Left" Margin="663,218,0,0" VerticalAlignment="Top" RenderTransformOrigin="14.882,0.462"/>
+        <Label x:Name="time_sb" Content="0" ContentStringFormat="{}{0:N2}s" HorizontalAlignment="Left" Margin="559,105,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.688,0.846"/>
+        <Label x:Name="time_dis" Content="0" ContentStringFormat="{}{0:N0}m" HorizontalAlignment="Left" Margin="412,209,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.688,0.846"/>
+        <Label x:Name="div_sl" Content="0" ContentStringFormat="{}{0:N2}s" HorizontalAlignment="Left" Margin="170,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.688,0.846"/>
+        <Button x:Name="stop" Content="Stop" HorizontalAlignment="Left" Margin="238,134,0,0" VerticalAlignment="Top" Width="57" Style="{DynamicResource ButtonStyle2}" FontSize="16" Click="stop_Click" />
 
 
     </Grid>

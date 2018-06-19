@@ -244,7 +244,7 @@ namespace WindowsFormsApplication1
                     shin.Value,boin.Value,time.ToString(),v_s.ToString(),v_b.ToString()
                 };
 
-                using (var writer = new CsvWriter("C:\\Users\\yukik\\OneDrive\\デスクトップ\\研究室\\子音と母音\\result.csv"))
+                using (var writer = new CsvWriter("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\result.csv"))
                 {
                     writer.WriteRow(data);
                     //非同期にすると失敗する
@@ -285,7 +285,10 @@ namespace WindowsFormsApplication1
 
                 button1.PerformClick();
                 await Task.Delay(500);
-
+                if (vol_b.Value < -3900)
+                {
+                    break;
+                }
 
             }
         }
