@@ -32,8 +32,8 @@ namespace b4contest
         public MainWindow()
         {
             InitializeComponent();
+
             slice.Value = 10;
-            
 
             boin.Add(new CmbObject("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav", "×"));
             boin.Add(new CmbObject("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\a.wav", "a"));
@@ -63,6 +63,8 @@ namespace b4contest
             sound_b.Balance = 10000;
             sound_s = new Audio(shin[0].ToString());
             sound_s.Balance = -10000;
+
+          
 
             
              
@@ -139,22 +141,25 @@ namespace b4contest
                 }
             }
 
+            int dis = (int)distance.Value;
+
             if (distance.Value >= 0)
             {
-                Task.Run(() =>
+                
+                Task.Run(async() =>
                 {
                     boin_play(url_b, times, vols);
-                    Task.Delay((int)distance.Value * 3);
+                    await Task.Delay(dis* 3);
                     shin_play(url_s);
 
                 });
             }
             else
             {
-                Task.Run(() =>
+                Task.Run(async() =>
                 {
                     shin_play(url_s);
-                    Task.Delay((int)distance.Value * -3);
+                    await Task.Delay(dis * -3);
                     boin_play(url_b, times, vols);
                 });
             }
@@ -169,20 +174,26 @@ namespace b4contest
                 sound_s.Volume = -1500;
                 sound_s.Play();
                 await Task.Delay(400);
+
             }
         }
         private async void boin_play(string[] urls,int[] times,int[] vols)
         {
             for (int i = 0; i < urls.Length; i++)
             {
-                sound_b = new Audio(urls[i]);
-                sound_b.Volume = vols[i];
-                await Task.Delay(times[i] * 10);
-                time_sb.Content = (double)times[i]/100 ;
-                sound_b.Play();
-                await Task.Delay(400-times[i]*10);
+                 sound_b = new Audio(urls[i]);
+                 sound_b.Volume = vols[i];
+                 await Task.Delay(times[i] * 10);
+                 sound_b.Play();
+                 await Task.Delay(400 - times[i] * 10);
+                 this.Dispatcher.Invoke((Action)(() =>
+                 {
+                     time_sb.Content =(double) times[i]/100;
+                 }));
+             
             }
         }
+        
 
         private void distance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -202,27 +213,31 @@ namespace b4contest
             music_r.Balance = 10000;
             music_l.Balance = -10000;
 
+            int dis = (int)distance.Value;
+            int div = (int)slice.Value;
+            Console.WriteLine(div + ":" + dis);
+
             if (distance.Value >= 0)
             {
-                Task.Run(() =>
+                Task.Run(async() =>
                 {
                     music_r.Play();
-                    kiritori(music_r, 0);
-                    Task.Delay((int)distance.Value * 3);
+                    kiritori(music_r, div,0);
+                    await Task.Delay(dis * 3);
                     music_l.Play();
-                    kiritori(music_l, (int)slice.Value);
+                    kiritori(music_l, div,div);
                 });
                 
             }
             else
             {
-                Task.Run(() =>
+                Task.Run(async() =>
                 {
                     music_l.Play();
-                    kiritori(music_l, 0);
-                    Task.Delay((int)distance.Value * -3);
+                    kiritori(music_l, div,0);
+                    await Task.Delay(dis * -3);
                     music_r.Play();
-                    kiritori(music_r, (int)slice.Value);
+                    kiritori(music_r, div,div);
                 });
                 
             }
@@ -233,34 +248,39 @@ namespace b4contest
 
         private void announcer_Click(object sender, RoutedEventArgs e)
         {
+            announ_r.Balance = 10000;
+            announ_l.Balance = -10000;
+            int dis = (int)distance.Value;
+            int div = (int)slice.Value;
+
             if (distance.Value >= 0)
             {
-                Task.Run(() =>
+                Task.Run(async() =>
                 {
                     announ_r.Play();
-                    kiritori(announ_r, 0);
-                    Task.Delay((int)distance.Value * 3);
+                    kiritori(announ_r,div, 0);
+                    await Task.Delay(dis * 3);
                     announ_l.Play();
-                    kiritori(announ_l, (int)slice.Value);
+                    kiritori(announ_l, div,div);
                 });
             }
             else
             {
-                Task.Run(() =>
+                Task.Run(async() =>
                 {
                     announ_l.Play();
-                    kiritori(announ_l, 0);
-                    Task.Delay((int)distance.Value * -3);
+                    kiritori(announ_l,div, 0);
+                    await Task.Delay(dis * -3);
                     announ_r.Play();
-                    kiritori(announ_r, (int)slice.Value);
+                    kiritori(announ_r, div,div);
 
                 });
             }
         }
 
-        private async void kiritori(Audio onsei, int zure)
+        private async void kiritori(Audio onsei, int zure,int st)
         {
-            await Task.Delay(zure);
+            await Task.Delay(st);
 
             while (onsei.Playing == true)
             {
