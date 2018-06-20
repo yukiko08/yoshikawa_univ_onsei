@@ -27,7 +27,10 @@ namespace b4contest
 
         Audio sound_b = new Audio("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
         Audio sound_s = new Audio("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
-        
+
+        int label = 0;
+        int vol_r = -1500;
+        int vol_l = -1500;
 
         public MainWindow()
         {
@@ -130,7 +133,6 @@ namespace b4contest
                         url_b[i] = boin.Find(v => v.Value == data[x][2]).Url;
                         times[i] = Int32.Parse(data[x][3]);
                         vols[i] = Int32.Parse(data[x][4]);
-                        Console.WriteLine(url_b[i]+url_s[i]);
                         break;
                     }
                     else
@@ -171,7 +173,7 @@ namespace b4contest
             for (int i = 0; i < urls.Length; i++)
             {
                 sound_s = new Audio(urls[i]);
-                sound_s.Volume = -1500;
+                sound_s.Volume = -1500+vol_l;
                 sound_s.Play();
                 await Task.Delay(400);
 
@@ -182,7 +184,7 @@ namespace b4contest
             for (int i = 0; i < urls.Length; i++)
             {
                  sound_b = new Audio(urls[i]);
-                 sound_b.Volume = vols[i];
+                 sound_b.Volume = vols[i]+vol_r;
                  await Task.Delay(times[i] * 10);
                  sound_b.Play();
                  await Task.Delay(400 - times[i] * 10);
@@ -198,6 +200,7 @@ namespace b4contest
         private void distance_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             time_dis.Content = distance.Value;
+            vol_Ctl();
         }
         private void slice_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -215,7 +218,6 @@ namespace b4contest
 
             int dis = (int)distance.Value;
             int div = (int)slice.Value;
-            Console.WriteLine(div + ":" + dis);
 
             if (distance.Value >= 0)
             {
@@ -286,7 +288,13 @@ namespace b4contest
             {
                 onsei.Volume = -10000;
                 await Task.Delay(zure);
-                onsei.Volume = 0;
+                if (st != 0) { 
+                    onsei.Volume = -1500+(vol_l>vol_r?vol_l:vol_r);
+                }
+                else
+                {
+                    onsei.Volume = -1500 + (vol_l > vol_r ? vol_r : vol_l);
+                }
                 await Task.Delay(zure);
 
             }
@@ -300,6 +308,34 @@ namespace b4contest
             music_r.Stop();
             music_l.Stop();
         }
+
+
+        private void vChk_Click_1(object sender, RoutedEventArgs e)
+        {
+            if ((bool)vChk.IsChecked)
+            {
+                label = 1;
+            }else{
+                label = 0;
+            }
+            vol_Ctl();
+        }
+        private void vol_Ctl()
+        {
+            if (label == 1)
+            {
+                vol_r = (int)distance.Value;
+                vol_l = -(int)distance.Value;
+            }
+            else
+            {
+
+                vol_r = 0;
+                vol_l = 0;
+            }
+        }
+
+
 
 
     }
