@@ -70,7 +70,7 @@ namespace b4contest
             sound_s.Balance = -10000;
 
 
-            
+            vol_Ctl();
             
             
              
@@ -343,7 +343,7 @@ namespace b4contest
 
 
 
-        string[] file = System.IO.Directory.GetFiles(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\gousei", "*", System.IO.SearchOption.AllDirectories);
+        string[] file = System.IO.Directory.GetFiles(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\jidou_gosei", "*", System.IO.SearchOption.AllDirectories);
         
 
         private void tangoPlay_Click(object sender, RoutedEventArgs e)
@@ -406,7 +406,7 @@ namespace b4contest
                     
                 }
                 onsei.Play();
-                await Task.Delay((int)(onsei.Duration*1000 + onsei_n.Duration*1000)-(1*i/10));
+                await Task.Delay((int)(onsei.Duration*1000 + onsei_n.Duration*1000));
                 Console.WriteLine(i+":"+onsei.Duration);
                 onsei.Dispose();
                 onsei_n.Dispose();
