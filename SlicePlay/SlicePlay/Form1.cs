@@ -169,8 +169,8 @@ namespace SlicePlay
                 Audio tango = new Audio(file[i]);
                 Audio tango_n = new Audio(file[i + 1]);
                 tango.Play();
-                Thread.Sleep(Convert.ToInt32(tango.Duration*1000+tango_n.Duration*1000));
-                /*
+                Thread.Sleep(Convert.ToInt32(tango.Duration*1000));
+                
                 int j=i;
                 while(i==j){
                    j = r.Next(10);
@@ -180,7 +180,7 @@ namespace SlicePlay
                 beep.Play();
                 zatuon.Play();
                 Thread.Sleep(Convert.ToInt32(zatuon.Duration * 1000));
-                beep.Stop();*/
+                beep.Stop();
                 
             }
 

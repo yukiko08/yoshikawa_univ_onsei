@@ -32,6 +32,8 @@ namespace b4contest
         int vol_r = -1500;
         int vol_l = -1500;
 
+        List<List<string>> delay = new List<List<string>>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -67,8 +69,9 @@ namespace b4contest
             sound_s = new Audio(shin[0].ToString());
             sound_s.Balance = -10000;
 
-          
 
+            
+            
             
              
         }
@@ -174,6 +177,7 @@ namespace b4contest
             {
                 sound_s = new Audio(urls[i]);
                 sound_s.Volume = -1500+vol_l;
+                sound_s.Balance = -10000;
                 sound_s.Play();
                 await Task.Delay(400);
 
@@ -185,6 +189,7 @@ namespace b4contest
             {
                  sound_b = new Audio(urls[i]);
                  sound_b.Volume = vols[i]+vol_r;
+                 sound_b.Balance = 10000;
                  await Task.Delay(times[i] * 10);
                  sound_b.Play();
                  await Task.Delay(400 - times[i] * 10);
@@ -289,12 +294,13 @@ namespace b4contest
                 onsei.Volume = -10000;
                 await Task.Delay(zure);
                 if (st != 0) { 
-                    onsei.Volume = -1500+(vol_l>vol_r?vol_l:vol_r);
+                    onsei.Volume =-1500 + (vol_l > vol_r ? vol_r : vol_l);
                 }
                 else
                 {
-                    onsei.Volume = -1500 + (vol_l > vol_r ? vol_r : vol_l);
+                    onsei.Volume = -1500 + (vol_l > vol_r ? vol_l :vol_r);
                 }
+                Console.WriteLine(onsei.Volume);
                 await Task.Delay(zure);
 
             }
@@ -307,8 +313,8 @@ namespace b4contest
             announ_r.Stop();
             music_r.Stop();
             music_l.Stop();
+            st = 1;
         }
-
 
         private void vChk_Click_1(object sender, RoutedEventArgs e)
         {
@@ -337,7 +343,88 @@ namespace b4contest
 
 
 
+        string[] file = System.IO.Directory.GetFiles(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\gousei", "*", System.IO.SearchOption.AllDirectories);
+        
+
+        private void tangoPlay_Click(object sender, RoutedEventArgs e)
+        {
+            st = 0;
+            Audio mono_r = new Audio("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
+            Audio mono_l = new Audio("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
+            mono_r.Balance = 10000;
+            mono_l.Balance = -10000;
+
+            /*using (var csv = new CsvReader(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\duration.csv"))
+            {
+                delay = csv.ReadToEnd();
+            }*/
+
+            
+
+            int dis = (int)distance.Value;
+
+            if (distance.Value >= 0)
+            {
+                Task.Run(async () =>
+                {
+                    mono_play(0,mono_r);
+                    await Task.Delay(dis * 3);
+                    mono_play(1,mono_l);
+                });
+            }
+            else
+            {
+                Task.Run(async () =>
+                {
+                    mono_play(1,mono_l);
+                    await Task.Delay(dis * -3);
+                    mono_play(0,mono_r);
+
+                });
+            }
+            
+            
+        }
+
+
+        int st = 0;
+        private async void mono_play(int a,Audio onsei)
+        {
+            await Task.Delay(138*a);
+            for (int i = a; i < file.Length-1 ; i+=2)
+            {
+                
+                onsei = new Audio(file[i]);
+                Audio onsei_n = new Audio(file[i+1]);
+                if (a == 0)
+                {
+                    onsei.Balance = 10000;
+                }
+                else
+                {
+                    onsei.Balance = -10000;
+                    
+                }
+                onsei.Play();
+                await Task.Delay((int)(onsei.Duration*1000 + onsei_n.Duration*1000)-(1*i/10));
+                Console.WriteLine(i+":"+onsei.Duration);
+                onsei.Dispose();
+                onsei_n.Dispose();
+                if (st== 1)
+                {
+                    break;
+                }
+
+            }
+        }
+
+
+
 
     }
      
 }
+
+
+
+

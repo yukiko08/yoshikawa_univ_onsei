@@ -94,7 +94,7 @@
                                 <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                                <Setter Property="Background" TargetName="border" Value="RoyalBlue"/>
                             </Trigger>
 
                         </ControlTemplate.Triggers>
@@ -116,7 +116,7 @@
                                 <Setter Property="Background" TargetName="border" Value="PeachPuff"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="PeachPuff"/>
+                                <Setter Property="Background" TargetName="border" Value="DeepPink"/>
                             </Trigger>
 
                         </ControlTemplate.Triggers>
@@ -131,8 +131,8 @@
         <Slider x:Name="distance" Style="{StaticResource SliderStyle}" Margin="129,259,128,0" Width="485" Maximum="1000" Minimum="-1000" TickPlacement="BottomRight" ValueChanged="distance_ValueChanged"   />
         <Image Margin="32,259,644,30" Source="audio.png" Stretch="Fill" Height="Auto" />
         <Image Margin="643,259,32,30" Source="audio.png" Stretch="Fill"/>
-        <Button x:Name="music" Content="音楽" HorizontalAlignment="Left" Margin="69,46,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource ButtonStyle1}" FontSize="20" Click="music_Click"/>
-        <Button x:Name="announcer" Content="アナウンサー" HorizontalAlignment="Left" Margin="169,46,0,0" VerticalAlignment="Top" Width="126"  Style="{DynamicResource ButtonStyle1}" FontSize="20" Click="announcer_Click"/>
+        <Button x:Name="music" Content="音楽" HorizontalAlignment="Left" Margin="32,46,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource ButtonStyle1}" FontSize="20" Click="music_Click"/>
+        <Button x:Name="announcer" Content="アナウンサー" HorizontalAlignment="Left" Margin="129,46,0,0" VerticalAlignment="Top" Width="126"  Style="{DynamicResource ButtonStyle1}" FontSize="20" Click="announcer_Click"/>
 
         <Slider x:Name="slice" HorizontalAlignment="Left" Margin="32,106,0,0" VerticalAlignment="Top" Width="303" ValueChanged="slice_ValueChanged" SmallChange="1" Maximum="1000" Foreground="#FF0039F9" />
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="78" Margin="389,46,0,0" TextWrapping="Wrap" Text="ひらがなをいれてね" VerticalAlignment="Top" Width="292" FontSize="20"/>
@@ -148,6 +148,7 @@
         <Label x:Name="div_sl" Content="0" ContentStringFormat="{}{0:N2}s" HorizontalAlignment="Left" Margin="170,140,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.688,0.846"/>
         <Button x:Name="stop" Content="Stop" HorizontalAlignment="Left" Margin="238,134,0,0" VerticalAlignment="Top" Width="57" Style="{DynamicResource ButtonStyle2}" FontSize="16" Click="stop_Click" />
         <CheckBox Content="音量に距離の影響" Height="16" HorizontalAlignment="Left" Margin="129,346,0,0" Name="vChk" VerticalAlignment="Top" Click="vChk_Click_1" />
+        <Button x:Name="tangoPlay" Content="一語" HorizontalAlignment="Left" Margin="269,46,0,0" VerticalAlignment="Top" Width="75"  Style="{DynamicResource ButtonStyle1}" Height="39" FontSize="20" Click="tangoPlay_Click" />
 
     </Grid>
 </Window>
