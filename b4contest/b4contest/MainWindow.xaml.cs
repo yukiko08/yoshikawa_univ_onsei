@@ -29,8 +29,9 @@ namespace b4contest
         Audio sound_s = new Audio("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
 
         int label = 0;
-        int vol_r = -1500;
-        int vol_l = -1500;
+        int vol_r = -4000; //0が最大
+        int vol_l = -4000;
+        
 
         List<List<string>> delay = new List<List<string>>();
 
@@ -96,12 +97,11 @@ namespace b4contest
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void shin_boin_play()
         {
             List<List<string>> data = new List<List<string>>();
 
             data = null;
-
 
             using (var csv = new CsvReader(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\result_time_vol.csv"))
             {
@@ -130,7 +130,7 @@ namespace b4contest
                 {
                     if (str[i] == data[x][0])
                     {
-                        
+
                         url_s[i] = shin.Find(v => v.Value == data[x][1]).Url;
 
                         url_b[i] = boin.Find(v => v.Value == data[x][2]).Url;
@@ -150,25 +150,32 @@ namespace b4contest
 
             if (distance.Value >= 0)
             {
-                
-                Task.Run(async() =>
+
+                Task.Run(async () =>
                 {
                     boin_play(url_b, times, vols);
-                    await Task.Delay(dis* 3);
+                    await Task.Delay(dis * 3);
                     shin_play(url_s);
 
-                });
+                }).Wait();
+                
             }
             else
             {
-                Task.Run(async() =>
+                Task.Run(async () =>
                 {
                     shin_play(url_s);
                     await Task.Delay(dis * -3);
                     boin_play(url_b, times, vols);
-                });
+                }).Wait();
             }
+
             
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            shin_boin_play();
 
         }
         private async void shin_play(string[] urls)
@@ -176,10 +183,10 @@ namespace b4contest
             for (int i = 0; i < urls.Length; i++)
             {
                 sound_s = new Audio(urls[i]);
-                sound_s.Volume = -1500+vol_l;
+                sound_s.Volume = vol_l;
                 sound_s.Balance = -10000;
                 sound_s.Play();
-                await Task.Delay(400);
+                await Task.Delay(500);
 
             }
         }
@@ -188,11 +195,11 @@ namespace b4contest
             for (int i = 0; i < urls.Length; i++)
             {
                  sound_b = new Audio(urls[i]);
-                 sound_b.Volume = vols[i]+vol_r;
+                 sound_b.Volume = (1500+vols[i])+vol_r;
                  sound_b.Balance = 10000;
                  await Task.Delay(times[i] * 10);
                  sound_b.Play();
-                 await Task.Delay(400 - times[i] * 10);
+                 await Task.Delay(500 - times[i] * 10);
                  this.Dispatcher.Invoke((Action)(() =>
                  {
                      time_sb.Content =(double) times[i]/100;
@@ -213,8 +220,8 @@ namespace b4contest
             
         }
 
-        Audio music_r = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\input_t.wav");
-        Audio music_l = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\input_t.wav");
+        Audio music_r = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\音\ランダム５文字\wav_files\あしまちあ.wav");
+        Audio music_l = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\音\ランダム５文字\wav_files\あしまちあ.wav");
 
         private void music_Click(object sender, RoutedEventArgs e)
         {
@@ -253,6 +260,43 @@ namespace b4contest
         Audio announ_r = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\input_a.wav");
         Audio announ_l = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\input_a.wav");
 
+        
+
+        private string test_time_play(string url)
+        {
+            Audio test_time_r = new Audio(url);
+            Audio test_time_l = new Audio(url); 
+
+            test_time_r.Balance = 10000;
+            test_time_l.Balance = -10000;
+            int dis = (int)distance.Value;
+            int div = (int)slice.Value;
+
+            if (distance.Value >= 0)
+            {
+                Task.Run(async () =>
+                {
+                    test_time_r.Play();
+                    kiritori(test_time_r, div, 0);
+                    await Task.Delay(dis * 3);
+                    test_time_l.Play();
+                    kiritori(test_time_l, div, div);
+                }).Wait();
+            }
+            else
+            {
+                Task.Run(async () =>
+                {
+                    test_time_l.Play();
+                    kiritori(test_time_l, div, 0);
+                    await Task.Delay(dis * -3);
+                    test_time_r.Play();
+                    kiritori(test_time_r, div, div);
+
+                }).Wait();
+            }
+            return url;
+        }
         private void announcer_Click(object sender, RoutedEventArgs e)
         {
             announ_r.Balance = 10000;
@@ -262,26 +306,26 @@ namespace b4contest
 
             if (distance.Value >= 0)
             {
-                Task.Run(async() =>
+                Task.Run(async () =>
                 {
                     announ_r.Play();
-                    kiritori(announ_r,div, 0);
+                    kiritori(announ_r, div, 0);
                     await Task.Delay(dis * 3);
                     announ_l.Play();
-                    kiritori(announ_l, div,div);
-                });
+                    kiritori(announ_l, div, div);
+                }).Wait();
             }
             else
             {
-                Task.Run(async() =>
+                Task.Run(async () =>
                 {
                     announ_l.Play();
-                    kiritori(announ_l,div, 0);
+                    kiritori(announ_l, div, 0);
                     await Task.Delay(dis * -3);
                     announ_r.Play();
-                    kiritori(announ_r, div,div);
+                    kiritori(announ_r, div, div);
 
-                });
+                }).Wait();
             }
         }
 
@@ -294,18 +338,19 @@ namespace b4contest
                 onsei.Volume = -10000;
                 await Task.Delay(zure);
                 if (st != 0) { 
-                    onsei.Volume =-1500 + (vol_l > vol_r ? vol_r : vol_l);
+                    onsei.Volume =(vol_l > vol_r ? vol_r : vol_l);
                 }
                 else
                 {
-                    onsei.Volume = -1500 + (vol_l > vol_r ? vol_l :vol_r);
+                    onsei.Volume = (vol_l > vol_r ? vol_l :vol_r);
                 }
-                Console.WriteLine(onsei.Volume);
                 await Task.Delay(zure);
 
             }
            
         }
+
+
 
         private void stop_Click(object sender, RoutedEventArgs e)
         {
@@ -316,8 +361,10 @@ namespace b4contest
             st = 1;
         }
 
+
         private void vChk_Click_1(object sender, RoutedEventArgs e)
         {
+            //音量を反映するかのラベル
             if ((bool)vChk.IsChecked)
             {
                 label = 1;
@@ -328,17 +375,20 @@ namespace b4contest
         }
         private void vol_Ctl()
         {
+
             if (label == 1)
             {
-                vol_r = (int)distance.Value;
-                vol_l = -(int)distance.Value;
+                vol_r = (int)(-4000-100*20*Math.Log10((distance.Maximum+1-distance.Value)/distance.Maximum));
+                vol_l = (int)(-4000-100*20*Math.Log10((distance.Maximum+1+distance.Value)/distance.Maximum));
             }
             else
             {
-
-                vol_r = 0;
-                vol_l = 0;
+                ///元の音源を中央で聞くと～とする
+                vol_r = -4000;
+                vol_l = -4000;
             }
+            Console.WriteLine("vol_r:" + vol_r + ",vol_l:" + vol_l);
+            Console.WriteLine(20* Math.Log10((distance.Maximum + 1 + distance.Value) / distance.Maximum));
         }
 
 
@@ -417,6 +467,118 @@ namespace b4contest
 
             }
         }
+
+        private string[] rand_hiragana()
+        {   
+            System.Random r = new System.Random();
+            string[] lis = new string[]{"あ","い","う","え","お",
+                                        "か","き","く","け","こ",
+                                        "さ","し","す","せ","そ",
+                                        "た","ち","つ","て","と",
+                                        "な","に","ぬ","ね","の",
+                                        "は","ひ","ふ","へ","ほ",
+                                        "ま","み","む","め","も",
+                                        "や","ゆ","よ",
+                                        "ら","り","る","れ","ろ",
+                                        "わ","を","ん",
+                                        "が","ぎ","ぐ","げ","ご",
+                                        "ざ","じ","ず","ぜ","ぞ",
+                                        "だ","ぢ","づ","で","ど",
+                                        "ば","び","ぶ","べ","ぼ",
+                                        "ぱ","ぴ","ぷ","ぺ","ぽ"};
+            string[] ans = new string[5];
+            for(int i=0;i<5;i++){
+                ans[i] =lis[r.Next(71)];
+            }
+            return ans;
+        }
+
+        private async void test_Click(object sender, RoutedEventArgs e)
+        {
+            System.Random r = new System.Random();
+            List<string> listtext = new List<string>();
+            int[] test_dis = new int[] { 0, 15, 30, 45, -15, -30, -45 };
+            List<int> list_dis = new List<int>();
+            list_dis.AddRange(test_dis);
+
+            for (int i = 0; i < list_dis.Count; i++)
+            {
+                int rand = r.Next(list_dis.Count);
+                distance.Value = list_dis[rand];
+                
+                textBox.Text = string.Join("",rand_hiragana());
+                listtext.Add(textBox.Text);
+                listtext.Add(distance.Value.ToString("#;-#;0"));
+                shin_boin_play();
+          
+                list_dis.RemoveAt(rand);
+                await Task.Delay(10000);   //あきらめた
+            }
+            
+            using (var csv = new CsvWriter(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\hiragana.csv"))
+            {
+                Console.Write(listtext);
+                csv.WriteRow(listtext);
+                csv.Close();
+            }
+               
+        }
+
+        private async void test_t_Click(object sender, RoutedEventArgs e)
+        {
+            int[] test_dis = new int[] { 0, 15, 30, 45, -15, -30, -45};
+            List<int> list_dis = new List<int>();
+            
+
+            int[] test_time = new int[] { 10, 50, 100, 150, 200};//0.01 0,05 ,0.1,0.15
+            List<int> list_time = new List<int>();
+            list_time.AddRange(test_time);
+
+            string[] file_t = System.IO.Directory.GetFiles(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\rand_hiragana", "*", System.IO.SearchOption.AllDirectories);
+
+            System.Random r = new System.Random();
+            List<string> listtext = new List<string>();
+
+            for (int j = 0; j < test_time.Length; j++)
+            {
+                int rand_t = r.Next(list_time.Count);
+                slice.Value = list_time[rand_t];
+                div_sl.Content = slice.Value / 1000;
+                listtext.Add(div_sl.Content.ToString());
+                listtext.Add("\r\n");
+                list_time.RemoveAt(rand_t);
+
+                list_dis.AddRange(test_dis);
+                for (int i = 0; i < test_dis.Length; i++)
+                {
+                    int rand_d = r.Next(list_dis.Count);
+                    distance.Value = list_dis[rand_d];
+
+                    string url = test_time_play(file_t[r.Next(file_t.Length)]);
+
+                    listtext.Add(url.Substring(url.Length-9,5));
+                    listtext.Add(distance.Value.ToString());
+                    listtext.Add("\r\n");
+                    await Task.Delay(5000);   //あきらめた
+                    
+                    list_dis.RemoveAt(rand_d);
+                   
+         
+                }
+
+            }
+            using (var csv = new CsvWriter(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\jikanjiku.csv"))
+            {
+                Console.Write(listtext);
+                csv.WriteRow(listtext);
+                csv.Close();
+                Console.Write("write OK");
+            }
+        }
+
+       
+
+     
 
 
 
