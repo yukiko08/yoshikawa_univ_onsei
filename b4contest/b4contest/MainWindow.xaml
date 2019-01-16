@@ -128,7 +128,7 @@
 
     </Window.Resources>
     <Grid>
-        <Slider x:Name="distance" Style="{StaticResource SliderStyle}" Margin="129,259,128,0" Width="485" Maximum="100" Minimum="-100" TickPlacement="BottomRight" ValueChanged="distance_ValueChanged" TickFrequency="5" LargeChange="5" SmallChange="5"   />
+        <Slider x:Name="distance" Style="{StaticResource SliderStyle}" Margin="129,259,128,0" Width="485" Maximum="50" Minimum="-50" TickPlacement="BottomRight" ValueChanged="distance_ValueChanged" TickFrequency="5" LargeChange="5" SmallChange="5"   />
         <Image Margin="32,259,644,74" Source="audio.png" Stretch="Fill" Height="Auto" />
         <Image Margin="643,259,32,74" Source="audio.png" Stretch="Fill"/>
         <Button x:Name="music" Content="5文字" HorizontalAlignment="Left" Margin="32,46,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource ButtonStyle1}" FontSize="20" Click="music_Click"/>

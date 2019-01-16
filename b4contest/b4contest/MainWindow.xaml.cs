@@ -29,8 +29,9 @@ namespace b4contest
         Audio sound_s = new Audio("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav");
 
         int label = 0;
-        int vol_r = -4000; //0が最大
-        int vol_l = -4000;
+        int set_vol;
+        int vol_r; //0が最大
+        int vol_l;
         
 
         List<List<string>> delay = new List<List<string>>();
@@ -38,7 +39,7 @@ namespace b4contest
         public MainWindow()
         {
             InitializeComponent();
-
+            set_vol = (int)(-100 * 20 * Math.Log10(distance.Maximum));
             slice.Value = 10;
 
             boin.Add(new CmbObject("C:\\Users\\S2\\OneDrive\\デスクトップ\\研究室\\子音と母音\\wav\\none.wav", "×"));
@@ -220,6 +221,9 @@ namespace b4contest
             
         }
 
+        Audio noise = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\音\ランダム５文字\hearing_rain2.wav");
+        
+
         Audio music_r = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\音\ランダム５文字\wav_files\あしまちあ.wav");
         Audio music_l = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\音\ランダム５文字\wav_files\あしまちあ.wav");
 
@@ -227,15 +231,18 @@ namespace b4contest
         {
             music_r.Balance = 10000;
             music_l.Balance = -10000;
+            noise.Volume = -5000;
 
             int dis = (int)distance.Value;
             int div = (int)slice.Value;
+            noise.Play();
 
             if (distance.Value >= 0)
             {
                 Task.Run(async() =>
                 {
-                    music_r.Play();
+             
+                    
                     kiritori(music_r, div,0);
                     await Task.Delay(dis * 3);
                     music_l.Play();
@@ -259,7 +266,6 @@ namespace b4contest
 
         Audio announ_r = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\input_a.wav");
         Audio announ_l = new Audio(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\input_a.wav");
-
         
 
         private string test_time_play(string url)
@@ -301,8 +307,10 @@ namespace b4contest
         {
             announ_r.Balance = 10000;
             announ_l.Balance = -10000;
+            noise.Volume = -5000;
             int dis = (int)distance.Value;
             int div = (int)slice.Value;
+            noise.Play();
 
             if (distance.Value >= 0)
             {
@@ -358,6 +366,7 @@ namespace b4contest
             announ_r.Stop();
             music_r.Stop();
             music_l.Stop();
+            noise.Stop();
             st = 1;
         }
 
@@ -378,17 +387,20 @@ namespace b4contest
 
             if (label == 1)
             {
-                vol_r = (int)(-4000-100*20*Math.Log10((distance.Maximum+1-distance.Value)/distance.Maximum));
-                vol_l = (int)(-4000-100*20*Math.Log10((distance.Maximum+1+distance.Value)/distance.Maximum));
+                
+                    vol_r = (int)(set_vol - 100 * 20 * Math.Log10((distance.Maximum + 1 - distance.Value) / distance.Maximum));
+                    vol_l = (int)(set_vol - 100 * 20 * Math.Log10((distance.Maximum + 1 + distance.Value) / distance.Maximum));                    
+                
+        
+                
             }
             else
             {
                 ///元の音源を中央で聞くと～とする
-                vol_r = -4000;
-                vol_l = -4000;
+                vol_r = set_vol;
+                vol_l = set_vol;
             }
             Console.WriteLine("vol_r:" + vol_r + ",vol_l:" + vol_l);
-            Console.WriteLine(20* Math.Log10((distance.Maximum + 1 + distance.Value) / distance.Maximum));
         }
 
 

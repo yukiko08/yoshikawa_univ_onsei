@@ -4,21 +4,25 @@
         Title="MainWindow" Height="452" Width="525">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="276*"/>
+            <ColumnDefinition Width="18*"/>
+            <ColumnDefinition Width="248*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="241*"/>
         </Grid.ColumnDefinitions>
-        <Slider x:Name="distance" HorizontalAlignment="Left" Margin="138,360,0,0" VerticalAlignment="Top" Width="260" Minimum="-1000" Maximum="1000" ValueChanged="distance_ValueChanged" SmallChange="1" Grid.ColumnSpan="2"/>
-        <Button x:Name="play" Content="play" HorizontalAlignment="Left" Margin="234,289,0,0" VerticalAlignment="Top" Width="75" Click="play_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name="left_sound" Content="left_sound" HorizontalAlignment="Left" Margin="169,64,0,0" VerticalAlignment="Top" Width="75" Click="left_sound_Click"/>
-        <Button x:Name="right_sound" Content="right_sound" HorizontalAlignment="Left" Margin="54.737,64,0,0" VerticalAlignment="Top" Width="75" Click="right_sound_Click" Grid.Column="1"/>
-        <Label x:Name="right_name" Content="Label" HorizontalAlignment="Left" Margin="54.737,22,0,0" VerticalAlignment="Top" Width="137" Grid.Column="1"/>
-        <Label x:Name="left_name" Content="Label" HorizontalAlignment="Left" Margin="169,22,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.912,-0.237" Width="146" Grid.ColumnSpan="2"/>
-        <Button x:Name="file" Content="Button" HorizontalAlignment="Left" Margin="33,25,0,0" VerticalAlignment="Top" Width="75" Click="file_Click"/>
-        <ListBox x:Name="file_list" HorizontalAlignment="Left" Height="187" Margin="21,55,0,0" VerticalAlignment="Top" Width="129"/>
-        <Label x:Name="dis" Content="0" HorizontalAlignment="Left" Margin="264,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.668,0.532" Grid.ColumnSpan="2" Width="35"/>
-        <ListBox x:Name="left_list" HorizontalAlignment="Left" Height="133" Margin="169,98,0,0" VerticalAlignment="Top" Width="130" Grid.ColumnSpan="2"/>
-        <ListBox x:Name="right_list" Grid.Column="1" HorizontalAlignment="Left" Height="143" Margin="57,99,0,0" VerticalAlignment="Top" Width="162"/>
-        <Button Content="play exp" Grid.Column="1" HorizontalAlignment="Left" Margin="117,289,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Slider x:Name="distance" HorizontalAlignment="Left" Margin="120,360,0,0" VerticalAlignment="Top" Width="260" Minimum="-50" Maximum="50" ValueChanged="distance_ValueChanged" SmallChange="1" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <Button x:Name="play" Content="play" HorizontalAlignment="Left" Margin="216,289,0,0" VerticalAlignment="Top" Width="75" Click="play_Click" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <Button x:Name="left_sound" Content="left_sound" HorizontalAlignment="Left" Margin="178,69,0,0" VerticalAlignment="Top" Width="75" Click="left_sound_Click" Grid.Column="1"/>
+        <Button x:Name="right_sound" Content="right_sound" HorizontalAlignment="Left" Margin="91,69,0,0" VerticalAlignment="Top" Width="75" Click="right_sound_Click" Grid.Column="3"/>
+        <Label x:Name="right_name" Content="Label" HorizontalAlignment="Left" Margin="91,35,0,0" VerticalAlignment="Top" Width="128" Grid.Column="3"/>
+        <Label x:Name="left_name" Content="Label" HorizontalAlignment="Left" Margin="181,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.912,-0.237" Width="130" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <Button x:Name="file" Content="Button" HorizontalAlignment="Left" Margin="15,25,0,0" VerticalAlignment="Top" Width="75" Click="file_Click" Grid.Column="1"/>
+        <ListBox x:Name="file_list" HorizontalAlignment="Left" Height="187" Margin="3,55,0,0" VerticalAlignment="Top" Width="129" Grid.Column="1"/>
+        <Label x:Name="dis" Content="0" HorizontalAlignment="Left" Margin="246,314,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.668,0.532" Grid.ColumnSpan="3" Width="35" Grid.Column="1"/>
+        <ListBox x:Name="left_list" HorizontalAlignment="Left" Height="143" Margin="181,99,0,0" VerticalAlignment="Top" Width="130" Grid.ColumnSpan="3" Grid.Column="1"/>
+        <ListBox x:Name="right_list" Grid.Column="3" HorizontalAlignment="Left" Height="143" Margin="91,99,0,0" VerticalAlignment="Top" Width="128"/>
+        <Button Content="play exp" Grid.Column="3" HorizontalAlignment="Left" Margin="117,289,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <CheckBox x:Name="vChk" Content="音量に距離を反映" Grid.Column="1" HorizontalAlignment="Left" Margin="52,328,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="move" Content="→" Grid.Column="1" HorizontalAlignment="Left" Margin="138,157,0,0" VerticalAlignment="Top" Width="35" Click="move_Click"/>
 
     </Grid>
 </Window>

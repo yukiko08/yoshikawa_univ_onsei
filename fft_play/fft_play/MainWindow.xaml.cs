@@ -30,6 +30,9 @@ namespace fft_play
     public partial class MainWindow : Window
     {
         List<CmbObject> fs = new List<CmbObject>();
+        int set_vol;
+        int vol_r;
+        int vol_l;
 
         public class CmbObject
         {
@@ -49,6 +52,7 @@ namespace fft_play
         public MainWindow()
         {
             InitializeComponent();
+            set_vol = (int)(-100 * 20 * Math.Log10(distance.Maximum));
         }
 
         private void left_sound_Click(object sender, RoutedEventArgs e)
@@ -67,6 +71,26 @@ namespace fft_play
             
         }
 
+        private void move_Click(object sender, RoutedEventArgs e)
+        {
+            int num = 0;
+            foreach (CmbObject lb in fs)
+            {
+                if (num % 2 == 0)
+                {
+                    left_name.Content = lb.Url;
+                    left_list.Items.Add(lb.Value);
+                }
+                else
+                {
+                    right_name.Content = lb.Url;
+                    right_list.Items.Add(lb.Value);
+
+                }
+                num++;
+            }
+        }
+
         private void play_Click(object sender, RoutedEventArgs e)
         {
             System.Random r = new System.Random();
@@ -80,6 +104,12 @@ namespace fft_play
      
             sound_r.Balance = 10000;
             sound_l.Balance = -10000;
+
+            vol_ctl();
+            
+            sound_l.Volume = vol_l;
+            sound_r.Volume = vol_r;
+
 
             int wait = ((int)distance.Value )* 3;
 
@@ -124,6 +154,7 @@ namespace fft_play
                     string strFileName = System.IO.Path.GetFileName(strFilePath);//
                     file_list.Items.Add(strFileName);
                     fs.Add(new CmbObject(strFilePath,strFileName));
+                    vol_ctl();
 
                 }
             }
@@ -147,7 +178,6 @@ namespace fft_play
             {
                 listtext.Add("\r\n");
                 int idx = r.Next(left_list.Items.Count);
-                Console.WriteLine(idx);
                 left_list.SelectedIndex = idx;
                 right_list.SelectedIndex = idx;
 
@@ -198,5 +228,28 @@ namespace fft_play
             }
             
         }
+
+  
+        private void vol_ctl()
+        {
+            if (vChk.IsChecked==true)
+            {
+                
+                vol_r = (int)(set_vol - 100 * 20 * Math.Log10((distance.Maximum + 1 - distance.Value) / distance.Maximum));
+                vol_l = (int)(set_vol - 100 * 20 * Math.Log10((distance.Maximum + 1 + distance.Value) / distance.Maximum));
+
+                
+                Console.WriteLine(vol_l + ":" + vol_r);
+            }
+            else
+            {
+                vol_l = set_vol;
+                vol_r = set_vol;
+   
+            }
+        }
+
+
+    
     }
 }
