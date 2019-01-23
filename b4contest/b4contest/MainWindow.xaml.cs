@@ -32,9 +32,11 @@ namespace b4contest
         int set_vol;
         int vol_r; //0が最大
         int vol_l;
-        
 
-        List<List<string>> delay = new List<List<string>>();
+
+        List<List<string>> data = new List<List<string>>();
+
+        //List<List<string>> delay = new List<List<string>>();
 
         public MainWindow()
         {
@@ -72,10 +74,14 @@ namespace b4contest
             sound_s.Balance = -10000;
 
 
-            vol_Ctl();
-            
-            
-             
+            data = null;
+
+            using (var csv = new CsvReader(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\result_time_vol.csv"))
+            {
+                data = csv.ReadToEnd();
+            }
+
+   
         }
 
 
@@ -100,14 +106,7 @@ namespace b4contest
 
         private void shin_boin_play()
         {
-            List<List<string>> data = new List<List<string>>();
-
-            data = null;
-
-            using (var csv = new CsvReader(@"C:\Users\S2\OneDrive\デスクトップ\研究室\子音と母音\result_time_vol.csv"))
-            {
-                data = csv.ReadToEnd();
-            }
+            
 
             //配列の作成
             string text = textBox.Text;
@@ -138,9 +137,7 @@ namespace b4contest
                         times[i] = Int32.Parse(data[x][3]);
                         vols[i] = Int32.Parse(data[x][4]);
                         break;
-                    }
-                    else
-                    {
+                    }else{
                         x++;
                     }
 
@@ -190,8 +187,12 @@ namespace b4contest
                     sound_s.Balance = -10000;
                     sound_s.Play();
                     await Task.Delay(500);
+                    sound_s.Dispose();
                 }
-                
+                else
+                {
+                    Console.WriteLine(textBox.Text);
+                }
 
             }
         }
@@ -207,11 +208,16 @@ namespace b4contest
                     await Task.Delay(times[i] * 10);
                     sound_b.Play();
                     await Task.Delay(500 - times[i] * 10);
+                    sound_b.Dispose();
                     this.Dispatcher.Invoke((Action)(() =>
                     {
                         time_sb.Content = (double)times[i] / 100;
                     }));
 
+                }
+                else
+                {
+                    Console.WriteLine(textBox.Text);
                 }
              
             }
@@ -342,7 +348,9 @@ namespace b4contest
                     kiritori(announ_r, div, div);
 
                 }).Wait();
+                
             }
+            
         }
 
         private async void kiritori(Audio onsei, int zure,int st)
@@ -363,6 +371,7 @@ namespace b4contest
                 await Task.Delay(zure);
 
             }
+            onsei.Dispose();
            
         }
 
@@ -532,7 +541,7 @@ namespace b4contest
                     listtext.Add(distance.Value.ToString("#;-#;0"));
                     listtext.Add("\r\n");
                     shin_boin_play();
-                    await Task.Delay(10000);   //あきらめた
+                    await Task.Delay(5000);   //あきらめた
                     list_dis.RemoveAt(rand);
                 }
                 listtext.Add("\r\n");
@@ -588,8 +597,7 @@ namespace b4contest
                     await Task.Delay(5000);   //あきらめた
                     
                     list_dis.RemoveAt(rand_d);
-                   
-         
+        
                 }
 
             }
