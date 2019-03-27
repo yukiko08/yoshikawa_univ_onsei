@@ -52,7 +52,7 @@ namespace fft_play
         public MainWindow()
         {
             InitializeComponent();
-            set_vol = (int)(-100 * 20 * Math.Log10(distance.Maximum));
+            set_vol = 1000+(int)(-100 * 20 * Math.Log10((distance.Maximum + 0.3) / 0.3));
         }
 
         private void left_sound_Click(object sender, RoutedEventArgs e)
@@ -111,7 +111,7 @@ namespace fft_play
             sound_r.Volume = vol_r;
 
 
-            int wait = ((int)distance.Value )* 3;
+            int wait =  (int)(distance.Value * 2.94*2);
 
             if (distance.Value >= 0)
             {
@@ -154,7 +154,6 @@ namespace fft_play
                     string strFileName = System.IO.Path.GetFileName(strFilePath);//
                     file_list.Items.Add(strFileName);
                     fs.Add(new CmbObject(strFilePath,strFileName));
-                    vol_ctl();
 
                 }
             }
@@ -169,57 +168,64 @@ namespace fft_play
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             System.Random r = new System.Random();
-            List<int> list_dis = new List<int>() { 0, 15, 30, 45, -15, -30, -45 };
-
+            double[] test_dis = { 0, 7.5 ,15,-7.5,-15 };// new int[] { 0, 0, 0, 0, 0, 0, 0 };
+            List<double> list_dis = new List<double>();
 
             List<string> listtext = new List<string>();
-
-            while (list_dis.Count > 0)
+            for (int i = 0; i < 7; i++)
             {
-                listtext.Add("\r\n");
-                int idx = r.Next(left_list.Items.Count);
-                left_list.SelectedIndex = idx;
-                right_list.SelectedIndex = idx;
-
-                int d = r.Next(list_dis.Count);
-                distance.Value = list_dis[d];
-                list_dis.RemoveAt(d);
-
-                Audio sound_r = new Audio(fs.Find(v => v.Value == right_list.SelectedValue.ToString()).Url);
-                Audio sound_l = new Audio(fs.Find(v => v.Value == left_list.SelectedValue.ToString()).Url);
-
-                sound_r.Balance = 10000;
-                sound_l.Balance = -10000;
-
-                int wait = ((int)distance.Value) * 3;
-                Console.WriteLine(wait);
-
-                if (distance.Value >= 0)
+                list_dis.AddRange(test_dis);
+                while (list_dis.Count > 0)
                 {
-                    Task.Run(async () =>
-                    {
-                        sound_r.Play();
-                        await Task.Delay(wait);
-                        sound_l.Play();
+                    listtext.Add("\r\n");
+                    int idx = r.Next(left_list.Items.Count);
+                    left_list.SelectedIndex = idx;
+                    right_list.SelectedIndex = idx;
 
-                    }).Wait();
-                }
-                else
-                {
-                    Task.Run(async () =>
-                    {
-                        sound_l.Play();
-                        await Task.Delay(-wait);
-                        sound_r.Play();
-                    }).Wait();
-                }
-                //log
-                listtext.Add(left_list.SelectedValue.ToString().Substring(0, 5));
-                listtext.Add("," + distance.Value);
+                    int d = r.Next(list_dis.Count);
+                    distance.Value = list_dis[d];
+                    list_dis.RemoveAt(d);
 
-                
-                await Task.Delay(5000);
+                    Audio sound_r = new Audio(fs.Find(v => v.Value == right_list.SelectedValue.ToString()).Url);
+                    Audio sound_l = new Audio(fs.Find(v => v.Value == left_list.SelectedValue.ToString()).Url);
+
+                    sound_r.Balance = 10000;
+                    sound_l.Balance = -10000;
+
+                    vol_ctl();
+
+                    int wait = (int)(distance.Value * 2.94 * 2);
+
+                    if (distance.Value >= 0)
+                    {
+                        Task.Run(async () =>
+                        {
+                            sound_r.Play();
+                            await Task.Delay(wait);
+                            sound_l.Play();
+
+                        }).Wait();
+                    }
+                    else
+                    {
+                        Task.Run(async () =>
+                        {
+                            sound_l.Play();
+                            await Task.Delay(-wait);
+                            sound_r.Play();
+                        }).Wait();
+                    }
+                    //log
+                    listtext.Add(left_list.SelectedValue.ToString().Substring(0, 5));
+                    listtext.Add("," + distance.Value);
+
+
+                    await Task.Delay(5000);
+                    sound_r.Dispose();
+                    sound_l.Dispose();
+                }
             }
+                
             
             using (var csv = new CsvWriter(@"C:\Users\S2\OneDrive\デスクトップ\研究室\音\fft_test.csv"))
             {
@@ -234,12 +240,11 @@ namespace fft_play
         {
             if (vChk.IsChecked==true)
             {
-                
-                vol_r = (int)(set_vol - 100 * 20 * Math.Log10((distance.Maximum + 1 - distance.Value) / distance.Maximum));
-                vol_l = (int)(set_vol - 100 * 20 * Math.Log10((distance.Maximum + 1 + distance.Value) / distance.Maximum));
 
-                
-                Console.WriteLine(vol_l + ":" + vol_r);
+                vol_r = (int)(set_vol - 100 * 20 * Math.Log10((distance.Maximum + 0.3 - distance.Value) / distance.Maximum + 0.3));
+                vol_l = (int)(set_vol - 100 * 20 * Math.Log10((distance.Maximum + 0.3 + distance.Value) / distance.Maximum + 0.3));
+
+
             }
             else
             {
